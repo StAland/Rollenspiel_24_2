@@ -8,14 +8,13 @@ namespace Rollenspiel_24_2
 {
     public abstract class Charakter
     {
-        private string _name;
+        public string Name { get; }
         public int Leben { get; private set; }
         public int Mana { get; private set; }
 
         public int Angriff { get; private set; }
         public int Ruestung { get; private set; }
         
-        private int _level;
         public string Klasse { get; private set; }
 
         //Ausrüstung für den Charakter als Liste
@@ -23,44 +22,43 @@ namespace Rollenspiel_24_2
 
         public Point position = new Point(0, 0);
 
-        public Charakter(string name, int leben, int mana, int angriff, int ruestung, int level, string klasse)
+        public Charakter(string name, int leben, int mana, int angriff, int ruestung, string klasse)
         {
-            _name = name;
+            Name = name;
             Leben = leben;
             Mana = mana;
             Angriff = angriff;
             Ruestung = ruestung;
-            _level = level;
             Klasse = klasse;
         }
 
-        public static void angriff()
+        public void Angreifen()
         {
             return;
         }
 
-        public static void heilen()
+        public void Heilen()
         {
             return;
         }
 
-        public static void setArmor(int neueRuestung)
+        public void SetArmor(int neueRuestung)
         {
             return;
         }
-        public static void getPosition()
+        public void GetPosition()
         {
             return;
         }
-        public static void setMana()
+        public void SetMana()
         {
             return;
         }
-        public static void nimmtSchaden()
+        public void NimmtSchaden()
         {
             return;
         }
-        public static void istTot()
+        public void IstTot()
         {
             return;
         }

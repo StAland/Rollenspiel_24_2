@@ -11,7 +11,7 @@ namespace Rollenspiel_24_2
         public int Erfahrungszuwachs { get; }
         List<string> _inventar = new List<string>();
         public Gegner(string name, int leben, int mana, int angriff, int ruestung, int level, string klasse, int erfahrungszuwachs)
-            : base(name, leben, mana, angriff, ruestung, level, klasse)
+            : base(name, leben, mana, angriff, ruestung, klasse)
         {
             Erfahrungszuwachs = erfahrungszuwachs;
         }

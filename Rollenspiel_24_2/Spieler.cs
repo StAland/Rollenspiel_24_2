@@ -13,41 +13,62 @@ namespace Rollenspiel_24_2
 
         List<string> _inventar = new List<string>();
 
-        public Spieler(string name, int leben, int mana, int angriff, int ruestung, int level, string klasse, int erfahrung, List<string> inventar)
-            : base(name, leben, mana, angriff, ruestung, level, klasse)
+        //Position des Spielers auf dem Spielfeld mit Point-Klasse
+        public Point Position { get; private set; }
+
+        public Spieler(string name, int leben, int mana, int angriff, int ruestung, int level, string klasse, int erfahrung, List<string> inventar, Point position)
+            : base(name, leben, mana, angriff, ruestung, klasse)
         {
             Erfahrung = erfahrung;
             _inventar = inventar;
+            Position = position;
         }
 
-        public static void getItemFromList()
+        public void GetItemFromList()
         {
             return;
         }
-        public static void setItemtoList()
+        public void SetItemtoList()
         {
             return;
         }
-        public static void bewegen()
+        //Bewegung des Spielers mit Point
+        public void Bewegen(string bewegung)
+        { 
+            switch (bewegung.ToLower())
+            {
+                case "oben":
+                    Position = new Point(Position.X, Position.Y - 1);
+                    break;
+                case "unten":
+                    Position = new Point(Position.X, Position.Y + 1);
+                    break;
+                case "links":
+                    Position = new Point(Position.X - 1, Position.Y);
+                    break;
+                case "rechts":
+                    Position = new Point(Position.X + 1, Position.Y);
+                    break;
+                default:
+                    Console.WriteLine("Ungültige Bewegung");
+                    break;
+            }
+        }
+        public void SetLevel()
         {
             return;
         }
-        public static void setLevel()
+        public void ErfahrungErhalten()
         {
             return;
         }
-        public static void erfahrungErhalten()
+        public void Ausruesten()
         {
             return;
         }
-        public static void ausruesten()
+        private void LevelUp()
         {
             return;
         }
-        private static void levelUp()
-        {
-            return;
-        }
-
     }
 }
