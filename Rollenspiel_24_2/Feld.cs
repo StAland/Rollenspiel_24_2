@@ -8,5 +8,16 @@ namespace Rollenspiel_24_2
 {
     internal class Feld
     {
+        //private string _name;
+        private bool _isBetretbar;
+
+        public Feld(string name, bool isBetretbar)
+        {
+            Name = name;
+            _isBetretbar = isBetretbar;
+        }
+
+        public bool IsBetretbar() {  return _isBetretbar; }
+        public string Name { get; }
     }
 }
