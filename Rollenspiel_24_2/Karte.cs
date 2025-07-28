@@ -8,5 +8,6 @@ namespace Rollenspiel_24_2
 {
     internal class Karte
     {
+        private Feld[,] felder;
     }
 }
