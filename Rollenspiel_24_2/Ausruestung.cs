@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Rollenspiel_24_2
 {
-    internal class Ausruestung
+    public class Ausruestung
     {
     }
 }
