@@ -9,4 +9,5 @@ namespace Rollenspiel_24_2
     public class Ausruestung
     {
     }
+    TEST
 }
