@@ -13,5 +13,9 @@ namespace Rollenspiel_24_2
             ApplicationConfiguration.Initialize();
             Application.Run(new Form1());
         }
+        public static void Test()
+        {
+            return;
+        }
     }
 }
