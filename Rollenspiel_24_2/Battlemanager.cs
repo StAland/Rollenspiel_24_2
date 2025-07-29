@@ -61,7 +61,7 @@ namespace Rollenspiel
                 ausgabe($"{spieler.Name} hat {item} nicht im Inventar.");
             }
         }
-        public  bool fliehen(Charakter spieler, Charakter gegner, Action<string> ausgabe)
+        public  bool Fliehen(Charakter spieler, Charakter gegner, Action<string> ausgabe)
         {
             ausgabe($"{spieler.Name} versucht zu fliehen!");
 
