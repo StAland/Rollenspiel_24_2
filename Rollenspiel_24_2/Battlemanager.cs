@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace Rollenspiel
 {
-    public static class BattleManager
+    public  class BattleManager
     {
-        public static void Attack(Charakter attacker, Charakter defender, Action<string> ausgabe)
+        public  void Attack(Charakter attacker, Charakter defender, Action<string> ausgabe)
         {
             int vorherHP = defender.Leben;
             defender.NimmtSchaden(attacker.Angriff);
@@ -35,24 +35,38 @@ namespace Rollenspiel
             }
         }
 
-        public static void UseItem(Charakter spieler, string item, Action<string> ausgabe)
+        public  void UseItem(Charakter spieler,Charakter gegner, string item, Action<string> ausgabe)
         {
             if (spieler is Spieler actualSpieler && actualSpieler._inventar.Contains(item))
             {
-                ausgabe($"{actualSpieler.Name} verwendet {item}.");
-                actualSpieler._inventar.Remove(item);
+                if (item == "Heiltrank")
+                {
+                    actualSpieler.Heilen(10);
+                    ausgabe($"{actualSpieler.Name} verwendet {item} und heilt 10 HP.");
+                    actualSpieler._inventar.Remove(item);
+                    Attack(gegner, spieler, ausgabe);
+                }
+                else if (item == "Mana-Trank")
+                {
+                    actualSpieler.SetMana(actualSpieler.Mana + 5); 
+                    ausgabe($"{actualSpieler.Name} verwendet {item} und regeneriert 5 Mana.");
+                    actualSpieler._inventar.Remove(item);
+                    Attack(gegner, spieler, ausgabe);
+                }
+
+
             }
             else
             {
                 ausgabe($"{spieler.Name} hat {item} nicht im Inventar.");
             }
         }
-        public static bool fliehen(Charakter spieler, Charakter gegner, Action<string> ausgabe)
+        public  bool fliehen(Charakter spieler, Charakter gegner, Action<string> ausgabe)
         {
             ausgabe($"{spieler.Name} versucht zu fliehen!");
 
             Random random = new Random();
-            bool fluchtErfolgreich = random.Next(100) < 60; // 60% Chance erfolgreich zu fliehen
+            bool fluchtErfolgreich = random.Next(100) < 60; 
 
             if (fluchtErfolgreich)
             {
@@ -62,7 +76,7 @@ namespace Rollenspiel
             else
             {
                 ausgabe($"Flucht fehlgeschlagen! {gegner.Name} holt {spieler.Name} ein!");
-                Attack(gegner, spieler, ausgabe); // Gegner bekommt einen freien Angriff
+                Attack(gegner, spieler, ausgabe); 
                 return false;
             }
         }
