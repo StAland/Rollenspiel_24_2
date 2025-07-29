@@ -18,24 +18,17 @@ namespace Logik
             this.mana = mana;
         }
 
-        public int getLeben()
+        public int GetLeben()
         {
             return leben;
         }
 
-        public int getMana()
+        public int GetMana()
         {
             return mana;
         }
 
-        public override void benutzen()
-        {
-            Console.WriteLine($"{getName()} wurde verwendet!");
-            if (leben > 0)
-                Console.WriteLine($"Leben wurde um {leben} erhöht.");
-            if (mana > 0)
-                Console.WriteLine($"Mana wurde um {mana} erhöht.");
-        }
+        // Methode Benutzen() und ihre Überschreibungen wurden entfernt.
     }
 
     public class Heiltrank : Verbrauchsgegenstand
@@ -44,11 +37,7 @@ namespace Logik
         {
         }
 
-        public override void benutzen()
-        {
-            Console.WriteLine("+10 Leben");
-            base.benutzen();
-        }
+        // Methode Benutzen() und ihre Überschreibungen wurden entfernt.
     }
 
     public class Manatrank : Verbrauchsgegenstand
@@ -57,10 +46,6 @@ namespace Logik
         {
         }
 
-        public override void benutzen()
-        {
-            Console.WriteLine("+10 Mana");
-            base.benutzen();
-        }
+        // Methode Benutzen() und ihre Überschreibungen wurden entfernt.
     }
 }

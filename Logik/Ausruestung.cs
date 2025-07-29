@@ -8,33 +8,24 @@ namespace Logik
 {
     public class Ausruestung : Gegenstand
     {
-        private int angriffswert;
-        private int verteidigungswert;
+        private int angriff;
+        private int ruestung;
 
-        public Ausruestung(string name, int angriff, int verteidigung) 
+        public Ausruestung(string name, int angriff, int ruestung) 
             : base(name, "Ausruestung")
         {
-            this.angriffswert = angriff;
-            this.verteidigungswert = verteidigung;
+            this.angriff = angriff;
+            this.ruestung = ruestung;
         }
 
-        public int getAngriffswert()
+        public int GetAngriff()
         {
-            return angriffswert;
+            return angriff;
         }
 
-        public int getVerteidigungswert()
+        public int GetRuestung()
         {
-            return verteidigungswert;
-        }
-
-        public override void benutzen()
-        {
-            Console.WriteLine($"{getName()} ausgerüstet");
-            if (angriffswert > 0)
-                Console.WriteLine($"Angriffswert: +{angriffswert}");
-            if (verteidigungswert > 0)
-                Console.WriteLine($"Verteidigungswert: +{verteidigungswert}");
+            return ruestung;
         }
     }
 
@@ -43,24 +34,12 @@ namespace Logik
         public Schwert() : base("Schwert", 7, 0)
         {
         }
-
-        public override void benutzen()
-        {
-            Console.WriteLine("Schwert ausgerüstet");
-            base.benutzen();
-        }
     }
 
     public class Schild : Ausruestung
     {
         public Schild() : base("Schild", 0, 5)
         {
-        }
-
-        public override void benutzen()
-        {
-            Console.WriteLine("Schild ausgerüstet");
-            base.benutzen();
         }
     }
 }
