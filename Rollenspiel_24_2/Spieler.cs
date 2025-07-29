@@ -69,10 +69,11 @@ namespace Rollenspiel_24_2
         //{
         //    if ();
         //}
-        public void Ausruesten()
+        public void Ausruesten(Gegenstand item)
         {
-            return;
+            _ausruestung.Add(item);
         }
+
         public bool LevelUp()
         {
             if (Erfahrung >= Level * 100)
