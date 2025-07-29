@@ -47,10 +47,24 @@ namespace Rollenspiel
                 ausgabe($"{spieler.Name} hat {item} nicht im Inventar.");
             }
         }
-        public static void fliehen(Charakter spieler, Action<string> ausgabe)
+        public static bool fliehen(Charakter spieler, Charakter gegner, Action<string> ausgabe)
         {
             ausgabe($"{spieler.Name} versucht zu fliehen!");
 
+            Random random = new Random();
+            bool fluchtErfolgreich = random.Next(100) < 60; // 60% Chance erfolgreich zu fliehen
+
+            if (fluchtErfolgreich)
+            {
+                ausgabe($"{spieler.Name} ist erfolgreich geflohen!");
+                return true;
+            }
+            else
+            {
+                ausgabe($"Flucht fehlgeschlagen! {gegner.Name} holt {spieler.Name} ein!");
+                Attack(gegner, spieler, ausgabe); // Gegner bekommt einen freien Angriff
+                return false;
+            }
         }
     }
 }
