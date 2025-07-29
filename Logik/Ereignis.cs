@@ -4,9 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Rollenspiel_24_2
+namespace Logik
 {
-    internal class Gegenstand
+    internal class Ereignis
     {
+        private Ereignis(string name)
+        {
+            //Name = name;
+        }
     }
 }

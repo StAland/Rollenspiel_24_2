@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Rollenspiel_24_2
+namespace Logik
 {
     public abstract class Charakter
     {
@@ -14,7 +15,7 @@ namespace Rollenspiel_24_2
 
         public int Angriff { get; protected set; }
         public int Ruestung { get; protected set; }
-        
+
         public string Klasse { get; private set; }
 
         //Ausrüstung für den Charakter als Liste
@@ -40,16 +41,20 @@ namespace Rollenspiel_24_2
 
         public void SetArmor(int neueRuestung)
         {
+            if (neueRuestung < 0)
+            {
+                throw new ArgumentException("Ruestung darf nicht kleiner 0 sein");
+            }
             Ruestung = neueRuestung;
         }
- 
+
         public void SetMana(int neueMana)
         {
             Mana = neueMana;
         }
-        public void NimmtSchaden()
+        public void NimmtSchaden(int schaden)
         {
-            Leben -= schaden ;
+            Leben -= schaden;
         }
 
         public bool IstTot()
