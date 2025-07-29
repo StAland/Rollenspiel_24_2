@@ -84,6 +84,9 @@ namespace Rollenspiel_24_2
                 Ruestung += 1;
                 Console.WriteLine($"{Name} ist auf Level {Level} aufgestiegen!");
                 return true;
+            } 
+            else{ 
+                return false;
             }
         }
     }
