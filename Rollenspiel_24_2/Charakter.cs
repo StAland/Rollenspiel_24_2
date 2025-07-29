@@ -54,7 +54,7 @@ namespace Rollenspiel_24_2
         {
             return;
         }
-        public void NimmtSchaden()
+        public void NimmtSchaden(int angriff)
         {
             return;
         }
