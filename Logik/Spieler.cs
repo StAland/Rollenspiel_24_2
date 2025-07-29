@@ -21,6 +21,7 @@ namespace Logik
         {
             Erfahrung = erfahrung;
             _inventar = inventar;
+            Level = level;
         }
 
         // !!!!!!!!!! Entkommentieren, wenn Inventar Name Property hat !!!!!!
