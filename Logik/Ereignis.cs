@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Rollenspiel_24_2
+namespace Logik
 {
-    public class Verbrauchsgegenstand
+    internal class Ereignis
     {
     }
 }
