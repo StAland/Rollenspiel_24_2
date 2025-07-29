@@ -9,20 +9,20 @@ namespace Rollenspiel_24_2
     public abstract class Charakter
     {
         public string Name { get; }
-        public int Leben { get; private set; }
-        public int Mana { get; private set; }
+        public int Leben { get; protected set; }
+        public int Mana { get; protected set; }
 
-        public int Angriff { get; private set; }
-        public int Ruestung { get; private set; }
+        public int Angriff { get; protected set; }
+        public int Ruestung { get; protected set; }
         
         public string Klasse { get; private set; }
 
         //Ausrüstung für den Charakter als Liste
-        private List<string> _ausruestung = new List<string>();
+        protected List<Gegenstand> _ausruestung = new List<Gegenstand>();
 
-        public Point position = new Point(0, 0);
+        public Point Position { get; protected set; }
 
-        public Charakter(string name, int leben, int mana, int angriff, int ruestung, string klasse)
+        public Charakter(string name, int leben, int mana, int angriff, int ruestung, string klasse, Point position)
         {
             Name = name;
             Leben = leben;
@@ -30,37 +30,31 @@ namespace Rollenspiel_24_2
             Angriff = angriff;
             Ruestung = ruestung;
             Klasse = klasse;
+            Position = position;
         }
 
-        public void Angreifen()
-        {
-            return;
-        }
-
-        public void Heilen()
+        public void Heilen(Verbrauchsgegenstand gegenstand)
         {
             return;
         }
 
         public void SetArmor(int neueRuestung)
         {
-            return;
+            Ruestung = neueRuestung;
         }
-        public void GetPosition()
+ 
+        public void SetMana(int neueMana)
         {
-            return;
+            Mana = neueMana;
         }
-        public void SetMana()
+        public void NimmtSchaden()
         {
-            return;
+            Leben -= schaden ;
         }
-        public void NimmtSchaden(int angriff)
+
+        public bool IstTot()
         {
-            return;
-        }
-        public void IstTot()
-        {
-            return;
+            return Leben <= 0;
         }
     }
 }
