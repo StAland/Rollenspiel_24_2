@@ -18,7 +18,7 @@ namespace Rollenspiel_24_2
         public string Klasse { get; private set; }
 
         //Ausrüstung für den Charakter als Liste
-        protected List<Gegenstand> _ausruestung = new List<Gegenstand>();
+        private List<string> _ausruestung = new List<string>();
 
         public Point Position { get; protected set; }
 

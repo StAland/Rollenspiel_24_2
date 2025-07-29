@@ -14,6 +14,6 @@ namespace Rollenspiel_24_2
             : base(name, leben, mana, angriff, ruestung, klasse)
         {
             Erfahrungszuwachs = erfahrungszuwachs;
-        }
     }
+        }
 }

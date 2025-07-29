@@ -54,21 +54,30 @@ namespace Rollenspiel_24_2
                     break;
             }
         }
-        public void SetLevel()
-        {
-            return;
-        }
-        public void ErfahrungErhalten()
-        {
-            return;
-        }
+        
+        //public void ErfahrungErhalten(int erfahrung)
+        //{
+        //    if ();
+        //}
         public void Ausruesten()
         {
             return;
         }
-        private void LevelUp()
+        public bool LevelUp()
         {
-            return;
+            if (Erfahrung >= Level * 100)
+            {
+                Level++;
+                Leben += 10;
+                Mana += 5;
+                Angriff += 2;
+                Ruestung += 1;
+                Console.WriteLine($"{Name} ist auf Level {Level} aufgestiegen!");
+                return true;
+            } 
+            else{ 
+                return false;
+            }
         }
     }
 }
