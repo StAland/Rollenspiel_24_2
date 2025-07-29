@@ -94,5 +94,10 @@ namespace Logik
                 return false;
             }
         }
+
+        internal void Bewegen(Point neuePosition)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
