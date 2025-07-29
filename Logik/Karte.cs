@@ -14,7 +14,7 @@ namespace Logik
             hoch,
             runter,
             links,
-            rechts,
+            rechts
         }
         private Feld[,] felder;
         private Spieler _spieler;
@@ -64,10 +64,10 @@ namespace Logik
             switch (richtung)
             {
                 case Richtung.hoch:
-                    neuePosition.Y -= 1;
+                    neuePosition.Y += 1;
                     break;
                 case Richtung.runter:
-                    neuePosition.Y += 1;
+                    neuePosition.Y -= 1;
                     break;
                 case Richtung.links:
                     neuePosition.X -= 1;

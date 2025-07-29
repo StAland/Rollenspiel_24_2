@@ -1,8 +1,8 @@
 ﻿namespace Logik
 {
-    public  class BattleManager
+    public class BattleManager
     {
-        public  void Attack(Charakter attacker, Charakter defender, Action<string> ausgabe)
+        public void Attack(Charakter attacker, Charakter defender, Action<string> ausgabe)
         {
             int vorherHP = defender.Leben;
             defender.NimmtSchaden(attacker.Angriff);
@@ -27,38 +27,56 @@
             }
         }
 
-        public  void UseItem(Charakter spieler,Charakter gegner, string item, Action<string> ausgabe)
+        public void UseItem(Charakter spieler, Charakter gegner, Gegenstand item, Action<string> ausgabe)
         {
-            //if (spieler is Spieler actualSpieler && actualSpieler._inventar.Contains(item))
-            //{
-            //    if (item == "Heiltrank")
-            //    {
-            //        actualSpieler.Heilen(10);
-            //        ausgabe($"{actualSpieler.Name} verwendet {item} und heilt 10 HP.");
-            //        actualSpieler._inventar.Remove(item);
-            //        Attack(gegner, spieler, ausgabe);
-            //    }
-            //    else if (item == "Mana-Trank")
-            //    {
-            //        actualSpieler.SetMana(actualSpieler.Mana + 5); 
-            //        ausgabe($"{actualSpieler.Name} verwendet {item} und regeneriert 5 Mana.");
-            //        actualSpieler._inventar.Remove(item);
-            //        Attack(gegner, spieler, ausgabe);
-            //    }
+            if (spieler is Spieler actualSpieler)
+            {
+                // Prüfen ob der Spieler den Gegenstand besitzt
+                if (!actualSpieler.InventarCheck(item))
+                {
+                    ausgabe($"{spieler.Name} hat {item.Name} nicht im Inventar.");
+                    return;
+                }
 
+                if (item is Verbrauchsgegenstand verbrauchsItem)
+                {
+                    // Effekt des Items anwenden
+                    switch (verbrauchsItem.ItemTyp)
+                    {
+                        case ItemTyp.Heiltrank:
+                            actualSpieler.Heilen(verbrauchsItem);
+                            ausgabe($"{actualSpieler.Name} verwendet {item.Name} und heilt sich.");
+                            break;
 
-            //}
-            //else
-            //{
-            //    ausgabe($"{spieler.Name} hat {item} nicht im Inventar.");
-            //}
+                        case ItemTyp.ManaTrank:
+                            actualSpieler.SetMana(actualSpieler.Mana + verbrauchsItem.Effektstaerke);
+                            ausgabe($"{actualSpieler.Name} verwendet {item.Name} und regeneriert {verbrauchsItem.Effektstaerke} Mana.");
+                            break;
+
+                        default:
+                            ausgabe($"{item.Name} kann nicht verwendet werden.");
+                            return;
+                    }
+
+                    
+                    actualSpieler.RemoveItemFromList(item);
+
+                    
+                    Attack(gegner, spieler, ausgabe);
+                }
+                else
+                {
+                    ausgabe($"{item.Name} ist kein verwendbarer Gegenstand.");
+                }
+            }
         }
-        public  bool Fliehen(Charakter spieler, Charakter gegner, Action<string> ausgabe)
+
+        public bool Fliehen(Charakter spieler, Charakter gegner, Action<string> ausgabe)
         {
             ausgabe($"{spieler.Name} versucht zu fliehen!");
 
             Random random = new Random();
-            bool fluchtErfolgreich = random.Next(100) < 60; 
+            bool fluchtErfolgreich = random.Next(100) < 60;
 
             if (fluchtErfolgreich)
             {
@@ -68,7 +86,7 @@
             else
             {
                 ausgabe($"Flucht fehlgeschlagen! {gegner.Name} holt {spieler.Name} ein!");
-                Attack(gegner, spieler, ausgabe); 
+                Attack(gegner, spieler, ausgabe);
                 return false;
             }
         }
