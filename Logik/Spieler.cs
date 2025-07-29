@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Rollenspiel_24_2
+namespace Logik
 {
-    internal class Spieler : Charakter
+    public class Spieler : Charakter
     {
         public int Level { get; private set; }
         public int Erfahrung { get; private set; }
