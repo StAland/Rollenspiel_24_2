@@ -34,7 +34,8 @@ namespace Rollenspiel_24_2
         //    if (InventarCheck(item))
         //    {
         //        _inventar.Remove(item);
-        //    } ;
+        //    }
+        //    ;
         //}
 
         public void AddItemToList(Gegenstand item)
