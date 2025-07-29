@@ -11,30 +11,40 @@ namespace Rollenspiel_24_2
         public int Level { get; private set; }
         public int Erfahrung { get; private set; }
 
-        List<string> _inventar = new List<string>();
+        List<Gegenstand> _inventar = new List<Gegenstand>();
 
-        //Position des Spielers auf dem Spielfeld mit Point-Klasse
-        public Point Position { get; private set; }
 
-        public Spieler(string name, int leben, int mana, int angriff, int ruestung, int level, string klasse, int erfahrung, List<string> inventar, Point position)
-            : base(name, leben, mana, angriff, ruestung, klasse)
+
+        public Spieler(string name, int leben, int mana, int angriff, int ruestung, int level, string klasse, int erfahrung, List<Gegenstand> inventar, Point position)
+            : base(name, leben, mana, angriff, ruestung, klasse, position)
         {
             Erfahrung = erfahrung;
             _inventar = inventar;
-            Position = position;
         }
 
-        public void GetItemFromList()
+        // !!!!!!!!!! Entkommentieren, wenn Inventar Name Property hat !!!!!!
+
+        //public bool InventarCheck(Gegenstand item)
+        //{
+        //    return _inventar.Any(gegenstand => gegenstand.Name == item.Name);
+        //}
+
+        //public void RemoveItemFromList(Gegenstand item)
+        //{
+        //    if (InventarCheck(item))
+        //    {
+        //        _inventar.Remove(item);
+        //    } ;
+        //}
+
+        public void AddItemToList(Gegenstand item)
         {
-            return;
+            _inventar.Add(item);
         }
-        public void SetItemtoList()
-        {
-            return;
-        }
+
         //Bewegung des Spielers mit Point
         public void Bewegen(string bewegung)
-        { 
+        {
             switch (bewegung.ToLower())
             {
                 case "oben":
@@ -54,15 +64,16 @@ namespace Rollenspiel_24_2
                     break;
             }
         }
-        
+
         //public void ErfahrungErhalten(int erfahrung)
         //{
         //    if ();
         //}
-        public void Ausruesten()
+        public void Ausruesten(Gegenstand item)
         {
-            return;
+            _ausruestung.Add(item);
         }
+
         public bool LevelUp()
         {
             if (Erfahrung >= Level * 100)
@@ -74,8 +85,9 @@ namespace Rollenspiel_24_2
                 Ruestung += 1;
                 Console.WriteLine($"{Name} ist auf Level {Level} aufgestiegen!");
                 return true;
-            } 
-            else{ 
+            }
+            else
+            {
                 return false;
             }
         }
