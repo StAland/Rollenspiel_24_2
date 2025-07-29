@@ -65,10 +65,10 @@ namespace Rollenspiel_24_2
             }
         }
 
-        //public void ErfahrungErhalten(int erfahrung)
-        //{
-        //    if ();
-        //}
+        public void ErfahrungErhalten(int erfahrung)
+        {
+            Erfahrung += erfahrung;
+        }
         public void Ausruesten(Gegenstand item)
         {
             _ausruestung.Add(item);
