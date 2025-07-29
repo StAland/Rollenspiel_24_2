@@ -8,27 +8,26 @@ namespace Logik
 {
     public class Verbrauchsgegenstand : Gegenstand
     {
-        private int leben;
-        private int mana;
+        public int Leben { get; protected set; }
+        public int Mana { get; protected set; }
 
         public Verbrauchsgegenstand(string name, int leben, int mana) 
             : base(name, "Verbrauchsgegenstand")
         {
-            this.leben = leben;
-            this.mana = mana;
+            this.Leben = leben;
+            this.Mana = mana;
         }
 
         public int GetLeben()
         {
-            return leben;
+            return Leben;
         }
 
         public int GetMana()
         {
-            return mana;
+            return Mana;
         }
 
-        // Methode Benutzen() und ihre Überschreibungen wurden entfernt.
     }
 
     public class Heiltrank : Verbrauchsgegenstand
@@ -37,7 +36,6 @@ namespace Logik
         {
         }
 
-        // Methode Benutzen() und ihre Überschreibungen wurden entfernt.
     }
 
     public class Manatrank : Verbrauchsgegenstand
@@ -46,6 +44,5 @@ namespace Logik
         {
         }
 
-        // Methode Benutzen() und ihre Überschreibungen wurden entfernt.
     }
 }

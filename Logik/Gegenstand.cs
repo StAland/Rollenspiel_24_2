@@ -9,23 +9,23 @@ namespace Logik
 
     public abstract class Gegenstand
     {
-        private string name;
-        private string typ;
+        public string Name { get; protected set; }
+        public string Typ { get; protected set; }
 
         public Gegenstand(string name, string typ)
         {
-            this.name = name;
-            this.typ = typ;
+            this.Name = name;
+            this.Typ = typ;
         }
 
         public string GetName()
         {
-            return name;
+            return Name;
         }
 
         public string GetTyp()
         {
-            return typ;
+            return Typ;
         }
     }
 }

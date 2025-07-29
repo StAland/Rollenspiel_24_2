@@ -27,6 +27,9 @@ namespace Logik
         {
             return ruestung;
         }
+
+        public int Angriff { get; protected set; }
+        public int Ruestung { get; protected set; }
     }
 
     public class Schwert : Ausruestung
