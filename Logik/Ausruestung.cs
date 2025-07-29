@@ -8,8 +8,8 @@ namespace Logik
 {
     public class Ausruestung : Gegenstand
     {
-        private int angriff;
-        private int ruestung;
+        public int angriff {get;}
+        public int ruestung {get;}
 
         public Ausruestung(string name, int angriff, int ruestung) 
             : base(name, "Ausruestung")
@@ -18,18 +18,6 @@ namespace Logik
             this.ruestung = ruestung;
         }
 
-        public int GetAngriff()
-        {
-            return angriff;
-        }
-
-        public int GetRuestung()
-        {
-            return ruestung;
-        }
-
-        public int Angriff { get; protected set; }
-        public int Ruestung { get; protected set; }
     }
 
     public class Schwert : Ausruestung

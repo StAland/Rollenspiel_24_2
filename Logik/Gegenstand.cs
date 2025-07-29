@@ -18,14 +18,5 @@ namespace Logik
             this.Typ = typ;
         }
 
-        public string GetName()
-        {
-            return Name;
-        }
-
-        public string GetTyp()
-        {
-            return Typ;
-        }
     }
 }

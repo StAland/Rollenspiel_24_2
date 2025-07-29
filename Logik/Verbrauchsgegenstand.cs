@@ -8,24 +8,14 @@ namespace Logik
 {
     public class Verbrauchsgegenstand : Gegenstand
     {
-        public int Leben { get; protected set; }
-        public int Mana { get; protected set; }
+        public int Leben { get;}
+        public int Mana { get;}
 
         public Verbrauchsgegenstand(string name, int leben, int mana) 
             : base(name, "Verbrauchsgegenstand")
         {
             this.Leben = leben;
             this.Mana = mana;
-        }
-
-        public int GetLeben()
-        {
-            return Leben;
-        }
-
-        public int GetMana()
-        {
-            return Mana;
         }
 
     }
