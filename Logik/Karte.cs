@@ -9,7 +9,15 @@ namespace Logik
 {
     internal class Karte
     {
+        public enum Richtung
+        {
+            hoch,
+            runter,
+            links,
+            rechts,
+        }
         private Feld[,] felder;
+        private Spieler _spieler;
 
 
         public Karte()
@@ -28,7 +36,6 @@ namespace Logik
             {
                 for (int j = 0; j < y; j++)
                 {
-                    //var rand = new Random();
                     var begehbar = rand.Next(0, 2) == 1;
                     felder[i, j] = new Feld("Feldname", begehbar);
                 }
@@ -48,5 +55,37 @@ namespace Logik
             return feld.IsBetretbar();
            
         }
+
+        public void Bewegen(Richtung richtung)
+        {
+            Point aktuellePosition = _spieler.Position;
+            Point neuePosition = aktuellePosition;
+
+            switch (richtung)
+            {
+                case Richtung.hoch:
+                    neuePosition.Y -= 1;
+                    break;
+                case Richtung.runter:
+                    neuePosition.Y += 1;
+                    break;
+                case Richtung.links:
+                    neuePosition.X -= 1;
+                    break;
+                case Richtung.rechts:
+                    neuePosition.X += 1;
+                    break;
+            }
+            // dürfen wir dieses Feld betreten 
+            // wenn ja dann bewegen Funktion des spielers aufrufen 
+            if (IsBetretbar(neuePosition))
+            {
+                _spieler.Bewegen(neuePosition);
+            }
+            else
+            {
+                Console.WriteLine("Feld ist nicht betretbar");
+            }
+        }
     }
-    }
+}
