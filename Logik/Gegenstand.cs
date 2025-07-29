@@ -18,16 +18,14 @@ namespace Logik
             this.typ = typ;
         }
 
-        public string getName()
+        public string GetName()
         {
             return name;
         }
 
-        public string getTyp()
+        public string GetTyp()
         {
             return typ;
         }
-
-        public abstract void benutzen();
     }
 }
