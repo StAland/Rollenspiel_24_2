@@ -8,14 +8,14 @@ namespace Logik
 {
     public class Ausruestung : Gegenstand
     {
-        public int angriff {get;}
-        public int ruestung {get;}
+        public int Angriff { get; }
+        public int Ruestung { get; }
 
         public Ausruestung(string name, int angriff, int ruestung) 
             : base(name, "Ausruestung")
         {
-            this.angriff = angriff;
-            this.ruestung = ruestung;
+            this.Angriff = angriff;
+            this.Ruestung = ruestung;
         }
 
     }
