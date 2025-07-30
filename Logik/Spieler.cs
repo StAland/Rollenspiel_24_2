@@ -76,6 +76,11 @@ namespace Logik
             }
         }
 
+        public List<Gegenstand> GetVerbauchsgegenstaende()
+        {
+            return _inventar.Where(item => item is Verbrauchsgegenstand).ToList<Gegenstand>();
+        }
+
 
         //Bewegung des Spielers mit Point
         public void Bewegen(string bewegung)
