@@ -31,43 +31,21 @@
         {
             if (spieler is Spieler actualSpieler)
             {
-                // Prüfen ob der Spieler den Gegenstand besitzt
-                if (!actualSpieler.InventarCheck(item))
-                {
-                    ausgabe($"{spieler.Name} hat {item.Name} nicht im Inventar.");
-                    return;
-                }
+                int vorherLeben = actualSpieler.Leben;
+                int vorherMana = actualSpieler.Mana;
 
-                if (item is Verbrauchsgegenstand verbrauchsItem)
-                {
-                    // Effekt des Items anwenden
-                    switch (verbrauchsItem.ItemTyp)
-                    {
-                        case ItemTyp.Heiltrank:
-                            actualSpieler.Heilen(verbrauchsItem);
-                            ausgabe($"{actualSpieler.Name} verwendet {item.Name} und heilt sich.");
-                            break;
+                actualSpieler.UseItem(item);
 
-                        case ItemTyp.ManaTrank:
-                            actualSpieler.SetMana(actualSpieler.Mana + verbrauchsItem.Effektstaerke);
-                            ausgabe($"{actualSpieler.Name} verwendet {item.Name} und regeneriert {verbrauchsItem.Effektstaerke} Mana.");
-                            break;
+                int geheilt = actualSpieler.Leben - vorherLeben;
+                int manaReg = actualSpieler.Mana - vorherMana;
 
-                        default:
-                            ausgabe($"{item.Name} kann nicht verwendet werden.");
-                            return;
-                    }
+                if (geheilt > 0)
+                    ausgabe($"{actualSpieler.Name} verwendet {item.Name} und heilt sich um {geheilt} HP.");
+                if (manaReg > 0)
+                    ausgabe($"{actualSpieler.Name} verwendet {item.Name} und regeneriert {manaReg} Mana.");
 
-                    
-                    actualSpieler.RemoveItemFromList(item);
-
-                    
-                    Attack(gegner, spieler, ausgabe);
-                }
-                else
-                {
-                    ausgabe($"{item.Name} ist kein verwendbarer Gegenstand.");
-                }
+                
+                Attack(gegner, spieler, ausgabe);
             }
         }
 
