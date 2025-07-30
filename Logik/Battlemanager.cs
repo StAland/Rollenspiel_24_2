@@ -2,11 +2,28 @@
 {
     public class BattleManager
     {
-        public void Attack(Charakter attacker, Charakter defender, Action<string> ausgabe)
+
+        private ISpieler _spieler;
+        private Gegner _gegner;
+
+
+        public BattleManager (Spieler spieler, Gegner gegner)
         {
-            int vorherHP = defender.Leben;
-            defender.NimmtSchaden(attacker.Angriff);
-            int schaden = vorherHP - defender.Leben;
+            _spieler = spieler;
+            _gegner = gegner;
+        }
+
+        public void Attack(Action<string> ausgabe)
+        {
+            //Attack(_spieler, _gegner, ausgabe);
+            //Attack(_gegner, _spieler, ausgabe);
+        }
+
+        private void Attack(Charakter attacker, Charakter defender, Action<string> ausgabe)
+        {
+
+            
+            int schaden = defender.NimmtSchaden(attacker.Angriff); 
 
             ausgabe($"{attacker.Name} greift {defender.Name} an und verursacht {schaden} Schaden.");
 
@@ -26,30 +43,55 @@
                 }
             }
         }
-
-        public void UseItem(Charakter spieler, Charakter gegner, Gegenstand item, Action<string> ausgabe)
+        public void UseItem(Gegenstand item)
+        {
+            UseItem(_spieler, item);
+            
+        }
+        private void UseItem(ISpieler spieler, Gegenstand item)
         {
             if (spieler is Spieler actualSpieler)
             {
-                int vorherLeben = actualSpieler.Leben;
-                int vorherMana = actualSpieler.Mana;
+                //int vorherLeben = actualSpieler.Leben;
+                //int vorherMana = actualSpieler.Mana;
 
                 actualSpieler.UseItem(item);
 
-                int geheilt = actualSpieler.Leben - vorherLeben;
-                int manaReg = actualSpieler.Mana - vorherMana;
+                //int geheilt = actualSpieler.Leben - vorherLeben;
+                //int manaReg = actualSpieler.Mana - vorherMana;
 
-                if (geheilt > 0)
-                    ausgabe($"{actualSpieler.Name} verwendet {item.Name} und heilt sich um {geheilt} HP.");
-                if (manaReg > 0)
-                    ausgabe($"{actualSpieler.Name} verwendet {item.Name} und regeneriert {manaReg} Mana.");
+                //if (geheilt > 0)
+                //    ausgabe($"{actualSpieler.Name} verwendet {item.Name} und heilt sich um {geheilt} HP.");
+                //if (manaReg > 0)
+                //    ausgabe($"{actualSpieler.Name} verwendet {item.Name} und regeneriert {manaReg} Mana.");
+
+
+                //Attack(gegner, spieler, ausgabe);
+            }
+        }
+        private void UseItem(Charakter spieler, Gegenstand item, Action<string> ausgabe)
+        {
+            if (spieler is Spieler actualSpieler)
+            {
+                //int vorherLeben = actualSpieler.Leben;
+                //int vorherMana = actualSpieler.Mana;
+
+                actualSpieler.UseItem(item);
+
+                //int geheilt = actualSpieler.Leben - vorherLeben;
+                //int manaReg = actualSpieler.Mana - vorherMana;
+
+                //if (geheilt > 0)
+                //    ausgabe($"{actualSpieler.Name} verwendet {item.Name} und heilt sich um {geheilt} HP.");
+                //if (manaReg > 0)
+                //    ausgabe($"{actualSpieler.Name} verwendet {item.Name} und regeneriert {manaReg} Mana.");
 
                 
-                Attack(gegner, spieler, ausgabe);
+                //Attack(gegner, spieler, ausgabe);
             }
         }
 
-        public bool Fliehen(Charakter spieler, Charakter gegner, Action<string> ausgabe)
+        private bool Fliehen(Charakter spieler, Charakter gegner, Action<string> ausgabe)
         {
             ausgabe($"{spieler.Name} versucht zu fliehen!");
 
@@ -68,5 +110,7 @@
                 return false;
             }
         }
+
+
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Logik
 {
-    internal class Gegner : Charakter
+    public class Gegner : Charakter
     {
         public int Erfahrungszuwachs { get; }
         List<Gegenstand> _inventar = new List<Gegenstand>();
@@ -15,6 +15,11 @@ namespace Logik
             : base(name, leben, mana, angriff, ruestung, klasse, position)
         {
             Erfahrungszuwachs = erfahrungszuwachs;
+        }
+
+        public override bool IstTot()
+        {
+            return Leben <= 0;
         }
     }
 }

@@ -16,6 +16,7 @@ namespace RollenspielTests
         private int erfahrung = 5;
         Point position = new Point(1, 3);
         List<Gegenstand> inventar = new List<Gegenstand>();
+        ILogging logger = new ConsolenLogger();
 
         [SetUp]
         public void Setup()
@@ -31,7 +32,8 @@ namespace RollenspielTests
                 klasse,
                 erfahrung,
                 inventar,
-                position);
+                position,
+                logger);
         }
 
         [Test]

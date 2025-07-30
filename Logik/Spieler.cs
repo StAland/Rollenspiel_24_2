@@ -7,19 +7,21 @@ using System.Threading.Tasks;
 
 namespace Logik
 {
-    public class Spieler : Charakter
+    public class Spieler : Charakter, ISpieler
     {
+        private ILogging _logger;
         public int Level { get; private set; }
         public int Erfahrung { get; private set; }
 
         List<Gegenstand> _inventar = new List<Gegenstand>();
 
-        public Spieler(string name, int leben, int mana, int angriff, int ruestung, int level, string klasse, int erfahrung, List<Gegenstand> inventar, Point position)
+        public Spieler(string name, int leben, int mana, int angriff, int ruestung, int level, string klasse, int erfahrung, List<Gegenstand> inventar, Point position, ILogging logger)
             : base(name, leben, mana, angriff, ruestung, klasse, position)
         {
             Erfahrung = erfahrung;
             _inventar = inventar;
             Level = level;
+            _logger = logger;
         }
 
         public bool InventarCheck(Gegenstand item)
@@ -40,27 +42,31 @@ namespace Logik
             _inventar.Add(item);
         }
 
-        public void UseItem (Gegenstand item)
+        public bool UseItem (Gegenstand item)
         {
             if (InventarCheck(item))
             {
                 if (item is Verbrauchsgegenstand verbrauch)
                 {
                     UseVerbrauchsgegenstand(verbrauch);
+                    return true;
                 }
                 else if (item is Ausruestung ausruestung)
                 {
                     ausruesten(ausruestung);
+                    return true;
                 }
                 else
                 {
                     Console.WriteLine("Unbekannter Gegenstandstyp.");
+                    _logger.Log("Unbekannter Gegenstandstyp");
                 }
             }
             else
             {
                 Console.WriteLine("Der gesuchte Gegenstand befindet sich nicht im Inventar.");
             }
+            return false;
         }
 
         private void UseVerbrauchsgegenstand(Verbrauchsgegenstand item)
@@ -134,6 +140,23 @@ namespace Logik
         internal void Bewegen(Point neuePosition)
         {
             throw new NotImplementedException();
+        }
+
+
+
+        void ISpieler.Bewegen(Point neuePosition)
+        {
+            Bewegen(neuePosition);
+        }
+
+        public override bool IstTot()
+        {
+            if (Leben <= 0)
+            {
+                Console.WriteLine("Du bist tot");
+                return true;
+            }
+            return false;
         }
     }
 }

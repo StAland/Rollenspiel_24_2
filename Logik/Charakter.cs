@@ -52,14 +52,14 @@ namespace Logik
         {
             Mana = neueMana;
         }
-        public void NimmtSchaden(int schaden)
+        public int NimmtSchaden(int schaden)
         {
             Leben -= schaden;
+            return schaden;
         }
 
-        public bool IstTot()
-        {
-            return Leben <= 0;
-        }
+        
+        public abstract bool IstTot();
+
     }
 }
