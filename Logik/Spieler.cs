@@ -24,21 +24,20 @@ namespace Logik
             Level = level;
         }
 
-        // !!!!!!!!!! Entkommentieren, wenn Inventar Name Property hat !!!!!!
 
-        //public bool InventarCheck(Gegenstand item)
-        //{
-        //    return _inventar.Any(gegenstand => gegenstand.Name == item.Name);
-        //}
 
-        //public void RemoveItemFromList(Gegenstand item)
-        //{
-        //    if (InventarCheck(item))
-        //    {
-        //        _inventar.Remove(item);
-        //    }
-        //    ;
-        //}
+        public bool InventarCheck(Gegenstand item)
+        {
+            return _inventar.Any(gegenstand => gegenstand.Name == item.Name);
+        }
+
+        public void RemoveItemFromList(Gegenstand item)
+        {
+            if (InventarCheck(item))
+            {
+                _inventar.Remove(item);
+            };
+        }
 
         public void AddItemToList(Gegenstand item)
         {

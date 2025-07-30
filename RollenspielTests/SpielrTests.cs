@@ -3,7 +3,7 @@ using System.Drawing;
 
 namespace RollenspielTests
 {
-    public class Tests
+    public class Spielertests
     {
         private Spieler _spieler;
         private string spielername = "Test";
