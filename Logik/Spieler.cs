@@ -87,7 +87,7 @@ namespace Logik
         }
 
 
-        //Bewegung des Spielers mit Point
+        /*//Bewegung des Spielers mit Point
         public void Bewegen(string bewegung)
         {
             switch (bewegung.ToLower())
@@ -108,7 +108,7 @@ namespace Logik
                     Console.WriteLine("Ungültige Bewegung");
                     break;
             }
-        }
+        }*/
 
         public void ErfahrungErhalten(int erfahrung)
         {

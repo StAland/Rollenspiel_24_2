@@ -7,14 +7,13 @@ using System.Threading.Tasks;
 
 namespace Logik
 {
-    public interface ISpieler 
+    public interface ISpieler : ICharakter
     {
         bool UseItem(Gegenstand item);
         List<Gegenstand> GetVerbauchsgegenstaende();
         void Bewegen(Point neuePosition);
         void ErfahrungErhalten(int erfahrung);
         bool LevelUp();
-        int NimmtSchaden(int schaden);
 
 
     }
