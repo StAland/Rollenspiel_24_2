@@ -36,7 +36,7 @@ namespace Logik
 
         public void Heilen(Verbrauchsgegenstand gegenstand)
         {
-            return;
+            Leben += gegenstand.Leben;
         }
 
         public void SetArmor(int neueRuestung)

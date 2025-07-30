@@ -14,8 +14,6 @@ namespace Logik
 
         List<Gegenstand> _inventar = new List<Gegenstand>();
 
-
-
         public Spieler(string name, int leben, int mana, int angriff, int ruestung, int level, string klasse, int erfahrung, List<Gegenstand> inventar, Point position)
             : base(name, leben, mana, angriff, ruestung, klasse, position)
         {
@@ -23,8 +21,6 @@ namespace Logik
             _inventar = inventar;
             Level = level;
         }
-
-
 
         public bool InventarCheck(Gegenstand item)
         {
@@ -42,6 +38,29 @@ namespace Logik
         public void AddItemToList(Gegenstand item)
         {
             _inventar.Add(item);
+        }
+
+        public void UseItem(Gegenstand item)
+        {
+            if (InventarCheck(item))
+            {
+                if (item is Verbrauchsgegenstand verbrauch)
+                {
+                    //Gegenstand braucht noch TypImplementierung
+                    //Dann unterscheiden zwischen heilen und Mana auffüllen
+
+                    Heilen(verbrauch);
+                    RemoveItemFromList(item);
+                }
+                else
+                {
+                    Console.WriteLine("Dieser Gegenstand kann nicht verwendet werden.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Der Gegenstand befindet sich nicht im Inventar.");
+            }
         }
 
         //Bewegung des Spielers mit Point
