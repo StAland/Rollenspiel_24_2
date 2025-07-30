@@ -42,7 +42,7 @@ namespace Logik
 
         public void UseItem(Gegenstand item)
         {
-            if (InventarCheck(item))
+            if (InventarCheck(item) /* && item.Typ == "" */)
             {
                 if (item is Verbrauchsgegenstand verbrauch)
                 {
@@ -62,6 +62,20 @@ namespace Logik
                 Console.WriteLine("Der Gegenstand befindet sich nicht im Inventar.");
             }
         }
+
+        public void ausruesten(Gegenstand item)
+        {
+            if (InventarCheck(item))
+            {
+                Ausruesten(item);
+                RemoveItemFromList(item);
+            }
+            else
+            {
+                Console.WriteLine("Der Gegenstand befindet sich nicht im Inventar.");
+            }
+        }
+
 
         //Bewegung des Spielers mit Point
         public void Bewegen(string bewegung)
