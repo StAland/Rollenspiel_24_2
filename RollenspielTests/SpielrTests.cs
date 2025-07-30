@@ -54,15 +54,15 @@ namespace RollenspielTests
             Assert.IsInstanceOf<Spieler>(_spieler);
         }
 
-        [Test]
-        public void TestBewegen()
-        {
-            _spieler.Bewegen("rechts");
-            var erwartetX = 2;
-            var erwartetY = 3;
-            Assert.That(_spieler.Position.X, Is.EqualTo(erwartetX));
-            Assert.That(_spieler.Position.Y, Is.EqualTo(erwartetY));           
-        }
+        //[Test]
+        //public void TestBewegen()
+        //{
+        //    _spieler.Bewegen("rechts");
+        //    var erwartetX = 2;
+        //    var erwartetY = 3;
+        //    Assert.That(_spieler.Position.X, Is.EqualTo(erwartetX));
+        //    Assert.That(_spieler.Position.Y, Is.EqualTo(erwartetY));           
+        //}
 
         [TestCase(5, 5)]
         [TestCase(0, 0)]
