@@ -40,45 +40,44 @@ namespace Logik
             _inventar.Add(item);
         }
 
-        public void UseItem(Gegenstand item)
-        {
-            if (InventarCheck(item) /* && item.Typ == "" */)
-            {
-                if (item is Verbrauchsgegenstand verbrauch)
-                {
-                    //Gegenstand braucht noch TypImplementierung
-                    //Dann unterscheiden zwischen heilen und Mana auffüllen
-
-                    Heilen(verbrauch);
-                    RemoveItemFromList(item);
-                }
-                else
-                {
-                    Console.WriteLine("Dieser Gegenstand kann nicht verwendet werden.");
-                }
-            }
-            else
-            {
-                Console.WriteLine("Der Gegenstand befindet sich nicht im Inventar.");
-            }
-        }
-
-        public void ausruesten(Gegenstand item)
+        public void UseItem (Gegenstand item)
         {
             if (InventarCheck(item))
             {
-                Ausruesten(item);
-                RemoveItemFromList(item);
+                if (item is Verbrauchsgegenstand verbrauch)
+                {
+                    UseVerbrauchsgegenstand(verbrauch);
+                }
+                else if (item is Ausruestung ausruestung)
+                {
+                    ausruesten(ausruestung);
+                }
+                else
+                {
+                    Console.WriteLine("Unbekannter Gegenstandstyp.");
+                }
             }
             else
             {
-                Console.WriteLine("Der Gegenstand befindet sich nicht im Inventar.");
+                Console.WriteLine("Der gesuchte Gegenstand befindet sich nicht im Inventar.");
             }
+        }
+
+        private void UseVerbrauchsgegenstand(Verbrauchsgegenstand item)
+        {
+            Heilen(item);
+            RemoveItemFromList(item);
+        }
+
+        private void ausruesten(Ausruestung item)
+        {
+            Ausruesten(item);
+            RemoveItemFromList(item);
         }
 
         public List<Gegenstand> GetVerbauchsgegenstaende()
         {
-            return _inventar.Where(item => item is Verbrauchsgegenstand).ToList<Gegenstand>();
+            return _inventar.Where(item => item is Verbrauchsgegenstand).ToList();
         }
 
 
@@ -109,7 +108,7 @@ namespace Logik
         {
             Erfahrung += erfahrung;
         }
-        public void Ausruesten(Gegenstand item)
+        private void Ausruesten(Gegenstand item)
         {
             _ausruestung.Add(item);
         }
