@@ -6,6 +6,7 @@
         private Spieler _spieler;
         private Gegner _gegner;
 
+        
 
         public BattleManager (Spieler spieler, Gegner gegner)
         {
@@ -13,11 +14,13 @@
             _gegner = gegner;
             _spieler.Gestorben += SpielerGestorben;
         }
-
+        
+            
+        
         public void Attack(Action<string> ausgabe)
         {
-            //Attack(_spieler, _gegner, ausgabe);
-            //Attack(_gegner, _spieler, ausgabe);
+            Attack(_spieler, _gegner, ausgabe);
+            Attack(_gegner, _spieler, ausgabe);
         }
 
         private void Attack(Charakter attacker, Charakter defender, Action<string> ausgabe)
@@ -35,11 +38,11 @@
                 if (defender is Spieler)
                 {
                     //MessageBox.Show("Du wurdest besiegt!");
-                    //Application.Restart();
+                    
                 }
                 else if (attacker is Spieler spieler && defender is Gegner gegner)
                 {
-                    //spieler.ErfahrungErhalten(gegner.Erfahrungszuwachs, ausgabe);
+                    
                     ausgabe($"{spieler.Name} erhält {gegner.Erfahrungszuwachs} XP!");
                 }
             }

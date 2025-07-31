@@ -36,9 +36,10 @@ namespace Logik
             Position = position;
         }
 
-        public void Heilen(Verbrauchsgegenstand gegenstand)
+        public int Heilen(Verbrauchsgegenstand gegenstand)
         {
             Leben += gegenstand.Leben;
+            return gegenstand.Leben;
         }
 
         public void SetArmor(int neueRuestung)
@@ -50,9 +51,10 @@ namespace Logik
             Ruestung = neueRuestung;
         }
 
-        public void SetMana(int neueMana)
+        public int SetMana(int neueMana)
         {
             Mana = neueMana;
+            return neueMana;
         }
         public int NimmtSchaden(int schaden)
         {
