@@ -71,8 +71,6 @@ namespace Logik
         {
             Gestorben?.Invoke(this, EventArgs.Empty);
         }
-        
-        public abstract bool IstTot();
 
     }
 }
