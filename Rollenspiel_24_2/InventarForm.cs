@@ -14,7 +14,6 @@ namespace Rollenspiel_24_2
         private ToolStripMenuItem entfernenMenuItem;
         private ToolStripMenuItem abbrechenMenuItem;
 
-        // Beispielhafte Datenquelle
         private List<Gegenstand> alleGegenstaende = new List<Gegenstand>();
 
         public InventarForm()
@@ -25,7 +24,6 @@ namespace Rollenspiel_24_2
 
         private void InitializeCustomComponents()
         {
-            // ComboBox für Filter
             filterComboBox = new ComboBox();
             filterComboBox.Items.AddRange(new string[] { "Alle Gegenstände", "Verbrauchsgegenstände", "Ausrüstung" });
             filterComboBox.SelectedIndex = 0;
@@ -33,14 +31,12 @@ namespace Rollenspiel_24_2
             filterComboBox.SelectedIndexChanged += FilterComboBox_SelectedIndexChanged;
             this.Controls.Add(filterComboBox);
 
-            // ListBox für Gegenstände
             gegenstandListBox = new ListBox();
             gegenstandListBox.Dock = DockStyle.Fill;
             gegenstandListBox.MouseDown += GegenstandListBox_MouseDown;
             gegenstandListBox.KeyDown += GegenstandListBox_KeyDown;
             this.Controls.Add(gegenstandListBox);
 
-            // ContextMenuStrip für Aktionen
             contextMenu = new ContextMenuStrip();
             auswaehlenMenuItem = new ToolStripMenuItem("Auswählen", null, AuswaehlenMenuItem_Click);
             entfernenMenuItem = new ToolStripMenuItem("Entfernen", null, EntfernenMenuItem_Click);
@@ -95,19 +91,16 @@ namespace Rollenspiel_24_2
 
         private void AuswaehlenMenuItem_Click(object sender, EventArgs e)
         {
-            // TODO: Aktion "Auswählen" implementieren
             MessageBox.Show("Gegenstand ausgewählt: " + gegenstandListBox.SelectedItem);
         }
 
         private void EntfernenMenuItem_Click(object sender, EventArgs e)
         {
-            // TODO: Aktion "Entfernen" implementieren
             MessageBox.Show("Gegenstand entfernt: " + gegenstandListBox.SelectedItem);
         }
 
         private void AbbrechenMenuItem_Click(object sender, EventArgs e)
         {
-            // Kontextmenü einfach schließen
         }
     }
 }
