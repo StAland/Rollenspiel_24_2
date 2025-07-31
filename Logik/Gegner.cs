@@ -16,10 +16,5 @@ namespace Logik
         {
             Erfahrungszuwachs = erfahrungszuwachs;
         }
-
-        public override bool IstTot()
-        {
-            return Leben <= 0;
-        }
     }
 }

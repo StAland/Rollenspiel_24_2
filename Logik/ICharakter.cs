@@ -8,11 +8,10 @@ namespace Logik
 {
     public interface ICharakter
     {
-        void Heilen(Verbrauchsgegenstand gegenstand);
+        event EventHandler? Gestorben;
+        int Heilen(Verbrauchsgegenstand gegenstand);
         void SetArmor(int neueRuestung);
-        void SetMana(int neueMana);
+        int SetMana(int neueMana);
         int NimmtSchaden(int schaden);
-        bool IstTot();
-        void OnGestorben();
     }
 }

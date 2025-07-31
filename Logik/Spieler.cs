@@ -148,15 +148,5 @@ namespace Logik
         {
             Bewegen(neuePosition);
         }
-
-        public override bool IstTot()
-        {
-            if (Leben <= 0)
-            {
-                Console.WriteLine("Du bist tot");
-                return true;
-            }
-            return false;
-        }
     }
 }
