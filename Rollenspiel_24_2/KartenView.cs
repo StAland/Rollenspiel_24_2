@@ -25,7 +25,12 @@ namespace Rollenspiel_24_2
 
         protected override void OnPaint(PaintEventArgs e)
         {
-            if (DesignMode || Karte?.Felder == null) return;
+            if (DesignMode || Karte?.Felder == null)
+            {
+                this.BorderStyle = BorderStyle.Fixed3D;
+                return;
+            }
+
             base.OnPaint(e);
             if (Karte?.Felder == null) return;
 

@@ -28,23 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            kartenView1 = new KartenView();
+            kartenView = new KartenView();
             SuspendLayout();
             // 
-            // kartenView1
+            // kartenView
             // 
-            kartenView1.Karte = null;
-            kartenView1.Location = new Point(104, 71);
-            kartenView1.Name = "kartenView1";
-            kartenView1.Size = new Size(150, 150);
-            kartenView1.TabIndex = 0;
+            kartenView.Karte = null;
+            kartenView.Location = new Point(56, 67);
+            kartenView.Name = "kartenView";
+            kartenView.Size = new Size(284, 255);
+            kartenView.TabIndex = 0;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(kartenView1);
+            Controls.Add(kartenView);
             Name = "Form1";
             Text = "Form1";
             ResumeLayout(false);
@@ -52,6 +52,6 @@
 
         #endregion
 
-        private KartenView kartenView1;
+        private KartenView kartenView;
     }
 }
