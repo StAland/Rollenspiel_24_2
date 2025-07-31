@@ -116,5 +116,28 @@ namespace Logik
                 Console.WriteLine("Feld ist nicht betretbar");
             }
         }
+        public bool IstBegehbar(Richtung richtung)
+        {
+            Point aktuellePosition = _spieler.Position;
+            Point neuePosition = aktuellePosition;
+
+            switch (richtung)
+            {
+                case Richtung.hoch:
+                    neuePosition.Y += 1;
+                    break;
+                case Richtung.runter:
+                    neuePosition.Y -= 1;
+                    break;
+                case Richtung.links:
+                    neuePosition.X -= 1;
+                    break;
+                case Richtung.rechts:
+                    neuePosition.X += 1;
+                    break;
+            }
+
+            return IsBetretbar(neuePosition);
+        }
     }
 }
