@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Logik
 {
-    public abstract class Charakter
+    public abstract class Charakter : ICharakter
     {
         public string Name { get; }
         public int Leben { get; protected set; }
