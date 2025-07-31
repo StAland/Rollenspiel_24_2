@@ -32,7 +32,7 @@
 
         public void UseItem(Gegenstand item)
         {
-            UseItem(_spieler, item);
+            UseItem(_spieler, item, (message) => { /*blank*/ });
         }
 
         private void UseItem(ISpieler spieler, Gegenstand item, Action<string> ausgabe)
