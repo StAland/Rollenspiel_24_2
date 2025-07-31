@@ -57,7 +57,7 @@
             btnHoch.TabIndex = 1;
             btnHoch.Text = "Hoch";
             btnHoch.UseVisualStyleBackColor = true;
-            btnHoch.Click += btn_oben_Click;
+            btnHoch.Click += btnOben_Click;
             // 
             // btnRunter
             // 
@@ -79,7 +79,7 @@
             btnRechts.TabIndex = 3;
             btnRechts.Text = "Rechts";
             btnRechts.UseVisualStyleBackColor = true;
-            btnRechts.Click += button2_Click;
+            btnRechts.Click += btnRechts_Click;
             // 
             // btnLinks
             // 
@@ -100,6 +100,7 @@
             btnSpieler.TabIndex = 5;
             btnSpieler.Text = "Spieler";
             btnSpieler.UseVisualStyleBackColor = true;
+            btnSpieler.Click += btnSpieler_Click;
             // 
             // btnInventar
             // 
@@ -109,6 +110,7 @@
             btnInventar.TabIndex = 6;
             btnInventar.Text = "Inventar";
             btnInventar.UseVisualStyleBackColor = true;
+            btnInventar.Click += btnInventar_Click;
             // 
             // Spielmenue
             // 
