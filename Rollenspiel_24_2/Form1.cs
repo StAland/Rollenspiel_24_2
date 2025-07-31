@@ -5,6 +5,8 @@ namespace Rollenspiel_24_2
         public Form1()
         {
             InitializeComponent();
+            kartenView.Karte = new Logik.Karte();
+            kartenView.Invalidate();
         }
     }
 }

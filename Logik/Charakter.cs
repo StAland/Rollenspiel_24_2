@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 
 namespace Logik
 {
-    public abstract class Charakter
+    public abstract class Charakter : ICharakter
     {
+
+        public event EventHandler? Gestorben;
         public string Name { get; }
         public int Leben { get; protected set; }
         public int Mana { get; protected set; }
@@ -34,9 +36,10 @@ namespace Logik
             Position = position;
         }
 
-        public void Heilen(Verbrauchsgegenstand gegenstand)
+        public int Heilen(Verbrauchsgegenstand gegenstand)
         {
             Leben += gegenstand.Leben;
+            return gegenstand.Leben;
         }
 
         public void SetArmor(int neueRuestung)
@@ -48,18 +51,26 @@ namespace Logik
             Ruestung = neueRuestung;
         }
 
-        public void SetMana(int neueMana)
+        public int SetMana(int neueMana)
         {
             Mana = neueMana;
+            return neueMana;
         }
         public int NimmtSchaden(int schaden)
         {
             Leben -= schaden;
+            if(Leben <= 0)
+            {
+                Leben = 0;
+                OnGestorben();
+            }
             return schaden;
         }
 
-        
-        public abstract bool IstTot();
+        protected virtual void OnGestorben()
+        {
+            Gestorben?.Invoke(this, EventArgs.Empty);
+        }
 
     }
 }

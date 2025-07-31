@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Logik
 {
-    internal class Feld
+    public class Feld
     {
         //private string _name;
         private bool _isBetretbar;

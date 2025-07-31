@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Logik
 {
-    internal class Karte
+    public class Karte
     {
         public enum Richtung
         {
@@ -18,12 +18,14 @@ namespace Logik
         }
         private Feld[,] felder;
         private Spieler _spieler;
-
+        public Feld[,] Felder { get {  return felder; } }
+        public Spieler Spieler {  get { return _spieler; } }
 
         public Karte()
         {
             // ToDo Karte aus Json File oder ähnlichem laden
             CreateRandomMap();
+            CreateRandomPlayer();
         }
 
         private void CreateRandomMap()
@@ -40,6 +42,33 @@ namespace Logik
                     felder[i, j] = new Feld("Feldname", begehbar);
                 }
             }
+        }
+
+        private void CreateRandomPlayer()
+        {
+            
+            string spielername = "Test";
+            int leben = 15;
+            int mana = 5;
+            int angriff = 7;
+            int ruestung = 7;
+            int level = 1;
+            string klasse = "Testklasse";
+            int erfahrung = 5;
+            Point position = new Point(1, 3);
+            List<Gegenstand> inventar = new List<Gegenstand>();
+            ILogging logger = new ConsolenLogger();
+            _spieler = _spieler = new Spieler(spielername,
+                leben,
+                mana,
+                angriff,
+                ruestung,
+                level,
+                klasse,
+                erfahrung,
+                inventar,
+                position,
+                logger);
         }
 
         public bool IsBetretbar(Point point)
@@ -86,6 +115,29 @@ namespace Logik
             {
                 Console.WriteLine("Feld ist nicht betretbar");
             }
+        }
+        public bool IstBegehbar(Richtung richtung)
+        {
+            Point aktuellePosition = _spieler.Position;
+            Point neuePosition = aktuellePosition;
+
+            switch (richtung)
+            {
+                case Richtung.hoch:
+                    neuePosition.Y += 1;
+                    break;
+                case Richtung.runter:
+                    neuePosition.Y -= 1;
+                    break;
+                case Richtung.links:
+                    neuePosition.X -= 1;
+                    break;
+                case Richtung.rechts:
+                    neuePosition.X += 1;
+                    break;
+            }
+
+            return IsBetretbar(neuePosition);
         }
     }
 }

@@ -14,7 +14,5 @@ namespace Logik
         void Bewegen(Point neuePosition);
         void ErfahrungErhalten(int erfahrung);
         bool LevelUp();
-
-
     }
 }

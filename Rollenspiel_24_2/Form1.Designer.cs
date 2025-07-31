@@ -28,12 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            kartenView = new KartenView();
+            SuspendLayout();
+            // 
+            // kartenView
+            // 
+            kartenView.Karte = null;
+            kartenView.Location = new Point(56, 67);
+            kartenView.Name = "kartenView";
+            kartenView.Size = new Size(284, 255);
+            kartenView.TabIndex = 0;
+            // 
+            // Form1
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
+            Controls.Add(kartenView);
+            Name = "Form1";
+            Text = "Form1";
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private KartenView kartenView;
     }
 }
