@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Logik;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,32 +13,50 @@ namespace Rollenspiel_24_2
 {
     public partial class Spielmenue : Form
     {
-        public Spielmenue()
+        private Karte _karte;
+        public Spielmenue(Karte karte)
         {
             InitializeComponent();
+            _karte = karte;
+            kartenView1.Karte = _karte;
+            kartenView1.Invalidate();
         }
 
-        private void btn_oben_Click(object sender, EventArgs e)
+        private void btnOben_Click(object sender, EventArgs e)
         {
-
+            _karte.Bewegen(Karte.Richtung.hoch);
+            kartenView1.Invalidate();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnRechts_Click(object sender, EventArgs e)
         {
-
+            _karte.Bewegen(Karte.Richtung.rechts);
+            kartenView1.Invalidate();
         }
 
         private void btnLinks_Click(object sender, EventArgs e)
         {
-
+            _karte.Bewegen(Karte.Richtung.links);
+            kartenView1.Invalidate();
         }
 
         private void btnRunter_Click(object sender, EventArgs e)
         {
-
+            _karte.Bewegen(Karte.Richtung.runter);
+            kartenView1.Invalidate();
         }
 
         private void kartenView1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSpieler_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnInventar_Click(object sender, EventArgs e)
         {
 
         }
