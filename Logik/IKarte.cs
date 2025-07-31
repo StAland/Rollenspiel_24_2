@@ -13,6 +13,7 @@ namespace Logik
         public enum Richtung;
         public bool IsBetretbar(Point point);
         public void Bewegen(Richtung richtung);
+        public bool IstBegehbar(Richtung richtung);
 
     }
 }
