@@ -3,7 +3,7 @@
     public class BattleManager
     {
 
-        private ISpieler _spieler;
+        private Spieler _spieler;
         private Gegner _gegner;
 
 
@@ -11,6 +11,7 @@
         {
             _spieler = spieler;
             _gegner = gegner;
+            _spieler.Gestorben += SpielerGestorben;
         }
 
         public void Attack(Action<string> ausgabe)
@@ -111,6 +112,10 @@
             }
         }
 
+        private void SpielerGestorben(object? sender, EventArgs e)
+        {
+            // Hier kommt rein was passiert wenn der Spieler stirbt
+        }
 
     }
 }

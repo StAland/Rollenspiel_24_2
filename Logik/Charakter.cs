@@ -9,6 +9,8 @@ namespace Logik
 {
     public abstract class Charakter : ICharakter
     {
+
+        public event EventHandler? Gestorben;
         public string Name { get; }
         public int Leben { get; protected set; }
         public int Mana { get; protected set; }
@@ -55,9 +57,18 @@ namespace Logik
         public int NimmtSchaden(int schaden)
         {
             Leben -= schaden;
+            if(Leben <= 0)
+            {
+                Leben = 0;
+                OnGestorben();
+            }
             return schaden;
         }
 
+        protected virtual void OnGestorben()
+        {
+            Gestorben?.Invoke(this, EventArgs.Empty);
+        }
         
         public abstract bool IstTot();
 
