@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Logik
 {
-    internal class Karte
+    public class Karte
     {
         public enum Richtung
         {
@@ -18,7 +18,8 @@ namespace Logik
         }
         private Feld[,] felder;
         private Spieler _spieler;
-
+        public Feld[,] Felder { get {  return felder; } }
+        public Spieler Spieler {  get { return _spieler; } }
 
         public Karte()
         {
