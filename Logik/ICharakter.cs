@@ -13,5 +13,6 @@ namespace Logik
         void SetMana(int neueMana);
         int NimmtSchaden(int schaden);
         bool IstTot();
+        void OnGestorben();
     }
 }

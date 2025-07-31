@@ -12,6 +12,7 @@
         {
             _spieler = spieler;
             _gegner = gegner;
+            _spieler.Gestorben += SpielerGestorben;
         }
         
             
@@ -114,6 +115,10 @@
             }
         }
 
+        private void SpielerGestorben(object? sender, EventArgs e)
+        {
+            // Hier kommt rein was passiert wenn der Spieler stirbt
+        }
 
     }
 }

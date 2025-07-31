@@ -25,6 +25,7 @@ namespace Logik
         {
             // ToDo Karte aus Json File oder ähnlichem laden
             CreateRandomMap();
+            CreateRandomPlayer();
         }
 
         private void CreateRandomMap()
@@ -41,6 +42,33 @@ namespace Logik
                     felder[i, j] = new Feld("Feldname", begehbar);
                 }
             }
+        }
+
+        private void CreateRandomPlayer()
+        {
+            
+            string spielername = "Test";
+            int leben = 15;
+            int mana = 5;
+            int angriff = 7;
+            int ruestung = 7;
+            int level = 1;
+            string klasse = "Testklasse";
+            int erfahrung = 5;
+            Point position = new Point(1, 3);
+            List<Gegenstand> inventar = new List<Gegenstand>();
+            ILogging logger = new ConsolenLogger();
+            _spieler = _spieler = new Spieler(spielername,
+                leben,
+                mana,
+                angriff,
+                ruestung,
+                level,
+                klasse,
+                erfahrung,
+                inventar,
+                position,
+                logger);
         }
 
         public bool IsBetretbar(Point point)

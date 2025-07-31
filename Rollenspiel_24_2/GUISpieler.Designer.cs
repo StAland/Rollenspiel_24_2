@@ -216,6 +216,7 @@ namespace Rollenspiel_24_2
             btnBeenden.TabIndex = 14;
             btnBeenden.Text = "schließen";
             btnBeenden.UseVisualStyleBackColor = true;
+            btnBeenden.Click += btnBeenden_Click;
             // 
             // GUISpieler
             // 
