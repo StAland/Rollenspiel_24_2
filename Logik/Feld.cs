@@ -10,11 +10,13 @@ namespace Logik
     {
         //private string _name;
         private bool _isBetretbar;
+        public List<EreignisWahrscheinlichkeit> Ereignisse { get; }
 
-        public Feld(string name, bool isBetretbar)
+        public Feld(string name, bool isBetretbar, List<EreignisWahrscheinlichkeit>? ereignisse = null)
         {
             Name = name;
             _isBetretbar = isBetretbar;
+            Ereignisse = ereignisse == null ? new List<EreignisWahrscheinlichkeit>() : ereignisse;          
         }
 
         public bool IsBetretbar() {  return _isBetretbar; }

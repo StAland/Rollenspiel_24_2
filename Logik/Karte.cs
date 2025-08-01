@@ -38,8 +38,18 @@ namespace Logik
             {
                 for (int j = 0; j < y; j++)
                 {
+                    var gewichtungKampf = rand.Next(0, 50);
+                    var kampf = new Kampfereignis();
+                    var kampfGewichtung = new EreignisWahrscheinlichkeit(gewichtungKampf, kampf);
+                    var gewichtungNichts = rand.Next(0, 50);
+                    var nichtsGewichtung = new EreignisWahrscheinlichkeit(gewichtungNichts);
+                    var ereignisse = new List<EreignisWahrscheinlichkeit>
+                    {
+                        nichtsGewichtung,
+                        kampfGewichtung
+                    };
                     var begehbar = rand.Next(0, 2) == 1;
-                    felder[i, j] = new Feld("Feldname", begehbar);
+                    felder[i, j] = new Feld("Feldname", begehbar, ereignisse);
                 }
             }
         }
@@ -138,6 +148,34 @@ namespace Logik
             }
 
             return IsBetretbar(neuePosition);
+        }
+
+        public void EreignisAuslösen()
+        {
+            var position = _spieler.Position;
+            var feld = Felder[position.X, position.Y];
+
+            if (feld == null) return;
+            var ereignisse = feld.Ereignisse;
+
+            if (ereignisse == null || ereignisse.Count == 0) return;
+            var gewichtungssumme = ereignisse.Sum(x => x.Gewichtung);
+            var rand = new Random();
+            var zufall = rand.Next(0, gewichtungssumme);
+            var summe = 0;
+            IEreignis? ereignis = null;
+            foreach (var e in ereignisse)
+            {
+                summe += e.Gewichtung;
+                if (summe >= zufall)
+                {
+                    ereignis = e.Ereignis;
+                    break;
+                }
+            }
+            
+            if (ereignis == null) return;
+            ereignis.ausloesen(_spieler);
         }
     }
 }

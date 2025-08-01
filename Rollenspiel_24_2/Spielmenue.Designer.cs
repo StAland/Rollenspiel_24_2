@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             Logik.Karte karte1 = new Logik.Karte();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Spielmenue));
             kartenView1 = new KartenView();
             btnHoch = new Button();
             btnRunter = new Button();
@@ -40,6 +41,7 @@
             // 
             // kartenView1
             // 
+            kartenView1.BackColor = SystemColors.HighlightText;
             kartenView1.BorderStyle = BorderStyle.Fixed3D;
             kartenView1.Karte = karte1;
             kartenView1.Location = new Point(72, 53);
@@ -116,8 +118,10 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.Info;
-            ClientSize = new Size(784, 441);
+            BackColor = SystemColors.WindowFrame;
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
+            BackgroundImageLayout = ImageLayout.Zoom;
+            ClientSize = new Size(784, 461);
             Controls.Add(btnInventar);
             Controls.Add(btnSpieler);
             Controls.Add(btnLinks);
