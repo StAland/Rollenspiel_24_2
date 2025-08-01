@@ -2,21 +2,16 @@
 {
     public class BattleManager
     {
-
-        private Spieler _spieler;
+        private ISpieler _spieler;
         private Gegner _gegner;
 
-        
-
-        public BattleManager (Spieler spieler, Gegner gegner)
+        public BattleManager(Spieler spieler, Gegner gegner)
         {
             _spieler = spieler;
             _gegner = gegner;
             _spieler.Gestorben += SpielerGestorben;
         }
-        
-            
-        
+
         public void Attack(Action<string> ausgabe)
         {
             Attack(_spieler, _gegner, ausgabe);
@@ -30,9 +25,9 @@
             ausgabe($"{attacker.Name} greift {defender.Name} an und verursacht {schaden} Schaden.");
         }
 
-        public void UseItem(Gegenstand item)
+        public void UseItem(Gegenstand item, Action<string> ausgabe)
         {
-            UseItem(_spieler, item);
+            UseItem(_spieler, item, ausgabe);
         }
 
         private void UseItem(ISpieler spieler, Gegenstand item, Action<string> ausgabe)
@@ -41,7 +36,7 @@
             {
                 actualSpieler.UseItem(verbrauchsgegenstand);
                 int heilamount = actualSpieler.Heilen(verbrauchsgegenstand);
-                ausgabe($"{actualSpieler.Name} Heilt sich um {heilamount} Lebenspunkte");
+                ausgabe($"{actualSpieler.Name} heilt sich um {heilamount} Lebenspunkte.");
             }
         }
 
@@ -49,6 +44,7 @@
         {
             Fliehen(_spieler, _gegner, ausgabe);
         }
+
         private bool Fliehen(Charakter spieler, Charakter gegner, Action<string> ausgabe)
         {
             ausgabe($"{spieler.Name} versucht zu fliehen!");
@@ -71,8 +67,7 @@
 
         private void SpielerGestorben(object? sender, EventArgs e)
         {
-            // Hier kommt rein was passiert wenn der Spieler stirbt
+            // Hier kommt rein, was passiert, wenn der Spieler stirbt
         }
-
     }
 }
