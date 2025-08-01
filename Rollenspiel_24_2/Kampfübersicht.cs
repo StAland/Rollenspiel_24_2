@@ -17,39 +17,45 @@ namespace Rollenspiel_24_2
         private Gegner gegner;
         private BattleManager _battleManager;
 
-
         public Kampfübersicht(Spieler spieler, Gegner gegner)
         {
             InitializeComponent();
             this.spieler = spieler;
             spieler.Gestorben += Spieler_Gestorben;
             this.gegner = gegner;
-            gegner.Gestorben += Gegner_Gestorben;
-            _battleManager = new BattleManager(spieler, gegner);
+            gegner.Gestorben += Gegner_Gestorben; // Added missing event subscription
+
+            _battleManager = new BattleManager(spieler, gegner, msg => MessageBox.Show(msg));
             UpdateAnzeige();
         }
 
         private void Gegner_Gestorben(object? sender, EventArgs e)
         {
-            _battleManager.SpielerGewonnen();
-
+            
+            this.Close();
         }
 
         private void Spieler_Gestorben(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            
+               
         }
 
         private void Attack_Click(object sender, EventArgs e)
         {
             _battleManager.Attack(msg => MessageBox.Show(msg));
             UpdateAnzeige();
+
         }
 
         private void Item_Click(object sender, EventArgs e)
         {
-            //_battleManager.UseItem(spieler.Inventar[0], msg => MessageBox.Show(msg));
-            //UpdateAnzeige();
+            
+            //if (spieler.Inventar != null && spieler.Inventar.Count > 0)
+            //{
+            //    _battleManager.UseItem(spieler.Inventar[0]);
+            //    UpdateAnzeige();
+            //}
         }
 
         private void Fliehen_Click(object sender, EventArgs e)
@@ -58,6 +64,7 @@ namespace Rollenspiel_24_2
             UpdateAnzeige();
             if (result) this.Close();
         }
+
         private void UpdateAnzeige()
         {
             StatSpieler.Items.Clear();
@@ -72,6 +79,5 @@ namespace Rollenspiel_24_2
             StatGegner.Items.Add($"ATK: {gegner.Angriff}");
             StatGegner.Items.Add($"DEF: {gegner.Ruestung}");
         }
-
     }
 }

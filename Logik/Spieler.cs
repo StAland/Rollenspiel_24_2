@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Logik
 {
-    public class Spieler : Charakter, ISpieler
+    public class Spieler : Charakter , ISpieler
     {
         private ILogging _logger;
         public int Level { get; private set; }
