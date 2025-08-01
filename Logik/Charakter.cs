@@ -42,7 +42,14 @@ namespace Logik
 
         public int Heilen(Verbrauchsgegenstand gegenstand)
         {
-            Leben += gegenstand.Leben;
+            if ((Leben += gegenstand.Leben) >= MaxLeben)
+            {
+                Leben = MaxLeben;
+            }
+            else
+            {
+                Leben += gegenstand.Leben;
+            }
             return gegenstand.Leben;
         }
 
