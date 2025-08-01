@@ -211,6 +211,7 @@ namespace Rollenspiel_24_2
             btnInventar.TabIndex = 13;
             btnInventar.Text = "Inventar";
             btnInventar.UseVisualStyleBackColor = true;
+            btnInventar.Click += btnInventar_Click;
             // 
             // btnBeenden
             // 
@@ -293,7 +294,7 @@ namespace Rollenspiel_24_2
             Font = new Font("Courier New", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Margin = new Padding(4, 3, 4, 3);
             Name = "GUISpieler";
-            Text = "Form2";
+            Text = "Spieler";
             ResumeLayout(false);
             PerformLayout();
         }

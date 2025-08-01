@@ -22,14 +22,27 @@ namespace Rollenspiel_24_2
         {
             InitializeComponent();
             this.spieler = spieler;
+            spieler.Gestorben += Spieler_Gestorben;
             this.gegner = gegner;
+            gegner.Gestorben += Gegner_Gestorben;
             _battleManager = new BattleManager(spieler, gegner);
+            UpdateAnzeige();
+        }
 
+        private void Gegner_Gestorben(object? sender, EventArgs e)
+        {
+            _battleManager.SpielerGewonnen();
+
+        }
+
+        private void Spieler_Gestorben(object? sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private void Attack_Click(object sender, EventArgs e)
         {
-            _battleManager.Attack(spieler, msg => MessageBox.Show(msg));
+            _battleManager.Attack(msg => MessageBox.Show(msg));
             UpdateAnzeige();
         }
 
@@ -41,8 +54,9 @@ namespace Rollenspiel_24_2
 
         private void Fliehen_Click(object sender, EventArgs e)
         {
-            _battleManager.Fliehen(msg => MessageBox.Show(msg));
+            var result = _battleManager.Fliehen(msg => MessageBox.Show(msg));
             UpdateAnzeige();
+            if (result) this.Close();
         }
         private void UpdateAnzeige()
         {
@@ -58,4 +72,6 @@ namespace Rollenspiel_24_2
             StatGegner.Items.Add($"ATK: {gegner.Angriff}");
             StatGegner.Items.Add($"DEF: {gegner.Ruestung}");
         }
+
+    }
 }

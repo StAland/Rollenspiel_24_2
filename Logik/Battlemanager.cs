@@ -12,7 +12,7 @@
             _spieler.Gestorben += SpielerGestorben;
         }
 
-        public void Attack(Spieler spieler, Action<string> ausgabe)
+        public void Attack(Action<string> ausgabe)
         {
             Attack(_spieler, _gegner, ausgabe);
             Attack(_gegner, _spieler, ausgabe);
@@ -41,9 +41,9 @@
             }
         }
 
-        public void Fliehen(Action<string> ausgabe)
+        public bool Fliehen(Action<string> ausgabe)
         {
-            Fliehen(_spieler, _gegner, ausgabe);
+            return Fliehen(_spieler, _gegner, ausgabe);
         }
 
         private bool Fliehen(Charakter spieler, Charakter gegner, Action<string> ausgabe)
@@ -69,6 +69,11 @@
         private void SpielerGestorben(object? sender, EventArgs e)
         {
             // Hier kommt rein, was passiert, wenn der Spieler stirbt
+        }
+
+        public void SpielerGewonnen()
+        {
+
         }
     }
 }

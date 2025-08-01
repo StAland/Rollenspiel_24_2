@@ -34,17 +34,16 @@ namespace Rollenspiel_24_2
 
         }
 
-        // !!!!!!! Entkommentieren, wenn GUIInventar fertig ist !!!!!!!
-
-        //private void btnInventar_Click(object sender, EventArgs e)
-        //{
-        //    GUIInventar form = new GUIInventar()
-        //    form.ShowDialog();
-        //}
 
         private void btnBeenden_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnInventar_Click(object sender, EventArgs e)
+        {
+            var form = new InventarForm();
+            form.ShowDialog();
         }
     }
 }

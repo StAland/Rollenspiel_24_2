@@ -70,6 +70,8 @@ namespace Logik
             ILogging logger = new ConsolenLogger();
             _spieler = _spieler = new Spieler(spielername,
                 leben,
+                leben,
+                mana,
                 mana,
                 angriff,
                 ruestung,
@@ -175,7 +177,7 @@ namespace Logik
             }
             
             if (ereignis == null) return;
-            ereignis.ausloesen(_spieler);
+            ereignis.Ausloesen(_spieler);
         }
     }
 }

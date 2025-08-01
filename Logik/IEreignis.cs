@@ -8,6 +8,6 @@ namespace Logik
 {
     public interface IEreignis
     {
-        void ausloesen(Spieler spieler);
+        void Ausloesen(Spieler spieler);
     }
 }
