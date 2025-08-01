@@ -13,7 +13,9 @@ namespace Logik
         public event EventHandler? Gestorben;
         public string Name { get; }
         public int Leben { get; protected set; }
+        public int MaxLeben { get; protected set; }
         public int Mana { get; protected set; }
+        public int MaxMana { get; protected set; }
 
         public int Angriff { get; protected set; }
         public int Ruestung { get; protected set; }
@@ -25,11 +27,13 @@ namespace Logik
 
         public Point Position { get; protected set; }
 
-        public Charakter(string name, int leben, int mana, int angriff, int ruestung, string klasse, Point position)
+        public Charakter(string name, int leben, int maxLeben, int mana, int maxMana , int angriff, int ruestung, string klasse, Point position)
         {
             Name = name;
             Leben = leben;
+            MaxLeben = maxLeben;
             Mana = mana;
+            MaxMana = maxMana; 
             Angriff = angriff;
             Ruestung = ruestung;
             Klasse = klasse;

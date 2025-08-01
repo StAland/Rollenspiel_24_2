@@ -15,8 +15,8 @@ namespace Logik
 
         List<Gegenstand> _inventar = new List<Gegenstand>();
 
-        public Spieler(string name, int leben, int mana, int angriff, int ruestung, int level, string klasse, int erfahrung, List<Gegenstand> inventar, Point position, ILogging logger)
-            : base(name, leben, mana, angriff, ruestung, klasse, position)
+        public Spieler(string name, int leben, int mana, int maxMana, int angriff, int maxLeben, int ruestung, int level, string klasse, int erfahrung, List<Gegenstand> inventar, Point position, ILogging logger)
+            : base(name, leben, mana, maxMana, angriff, maxLeben, ruestung, klasse, position)
         {
             Erfahrung = erfahrung;
             _inventar = inventar;

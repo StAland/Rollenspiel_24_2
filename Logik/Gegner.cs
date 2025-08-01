@@ -11,8 +11,8 @@ namespace Logik
     {
         public int Erfahrungszuwachs { get; }
         List<Gegenstand> _inventar = new List<Gegenstand>();
-        public Gegner(string name, int leben, int mana, int angriff, int ruestung, int level, string klasse, int erfahrungszuwachs, Point position)
-            : base(name, leben, mana, angriff, ruestung, klasse, position)
+        public Gegner(string name, int leben, int maxLeben, int mana, int maxMana, int angriff, int ruestung, int level, string klasse, int erfahrungszuwachs, Point position)
+            : base(name, leben, maxLeben, mana, maxMana, angriff, ruestung, klasse, position)
         {
             Erfahrungszuwachs = erfahrungszuwachs;
         }
