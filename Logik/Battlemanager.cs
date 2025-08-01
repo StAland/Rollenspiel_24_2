@@ -2,7 +2,7 @@
 {
     public class BattleManager
     {
-        private ISpieler _spieler;
+        private Spieler _spieler;
         private Gegner _gegner;
 
         public BattleManager(Spieler spieler, Gegner gegner)
@@ -12,7 +12,7 @@
             _spieler.Gestorben += SpielerGestorben;
         }
 
-        public void Attack(Action<string> ausgabe)
+        public void Attack(Spieler spieler, Action<string> ausgabe)
         {
             Attack(_spieler, _gegner, ausgabe);
             Attack(_gegner, _spieler, ausgabe);
@@ -30,7 +30,7 @@
             UseItem(_spieler, item, ausgabe);
         }
 
-        private void UseItem(ISpieler spieler, Gegenstand item, Action<string> ausgabe)
+        private void UseItem(Spieler spieler, Gegenstand item, Action<string> ausgabe)
         {
             if (spieler is Spieler actualSpieler && item is Verbrauchsgegenstand verbrauchsgegenstand)
             {
