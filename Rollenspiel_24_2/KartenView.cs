@@ -51,7 +51,7 @@ namespace Rollenspiel_24_2
                     {
                         e.Graphics.FillRectangle(feld.IsBetretbar() ? Brushes.LightGreen : Brushes.DarkGray, rect);
                     }
-                    e.Graphics.DrawRectangle(Pens.Black, rect);
+                    e.Graphics.DrawRectangle(Pens.Black, rect);                    
                 }
             }
         }

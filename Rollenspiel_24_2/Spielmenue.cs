@@ -69,13 +69,14 @@ namespace Rollenspiel_24_2
 
         private void btnSpieler_Click(object sender, EventArgs e)
         {
-            //GUISpieler neueForm = new GUISpieler();
-            //neueForm.ShowDialog();
+            GUISpieler neueForm = new GUISpieler(_karte.Spieler);
+            neueForm.ShowDialog();
         }
 
         private void btnInventar_Click(object sender, EventArgs e)
         {
-
+            var inventarForm = new InventarForm();
+            inventarForm.ShowDialog();
         }
     }
 }

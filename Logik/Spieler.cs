@@ -139,7 +139,7 @@ namespace Logik
 
         internal void Bewegen(Point neuePosition)
         {
-            throw new NotImplementedException();
+            Position = neuePosition;
         }
 
 
