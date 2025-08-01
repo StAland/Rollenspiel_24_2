@@ -45,13 +45,13 @@ namespace Rollenspiel_24_2
         {
             StatSpieler.Items.Clear();
             StatSpieler.Items.Add($"{spieler.Name}");
-            StatSpieler.Items.Add($"HP: {spieler.Leben} / {spieler.MaxHP}");
+            StatSpieler.Items.Add($"HP: {spieler.Leben} / {spieler.MaxLeben}");
             StatSpieler.Items.Add($"ATK: {spieler.Angriff}");
             StatSpieler.Items.Add($"DEF: {spieler.Ruestung}");
 
             StatGegner.Items.Clear();
             StatGegner.Items.Add($"{gegner.Name}");
-            StatGegner.Items.Add($"HP: {gegner.Leben} / {gegner.MaxHP}");
+            StatGegner.Items.Add($"HP: {gegner.Leben} / {gegner.MaxLeben}");
             StatGegner.Items.Add($"ATK: {gegner.Angriff}");
             StatGegner.Items.Add($"DEF: {gegner.Ruestung}");
         }
