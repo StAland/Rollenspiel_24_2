@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace Logik
 {
-    internal class Ereignis
+    public interface IEreignis
     {
-        private Ereignis(string name)
-        {
-            //Name = name;
-        }
+        void ausloesen(Spieler spieler);
     }
 }
