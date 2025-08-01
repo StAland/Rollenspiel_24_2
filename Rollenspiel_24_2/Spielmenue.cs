@@ -1,4 +1,5 @@
 ﻿using Logik;
+using static Logik.Karte;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,9 +21,24 @@ namespace Rollenspiel_24_2
             _karte = karte;
             kartenView1.Karte = _karte;
             kartenView1.Invalidate();
+            AktualisiereBewegungsbutton();
         }
 
-        private void btnOben_Click(object sender, EventArgs e)
+        private bool IsBetretbar(Richtung richtung)
+        {
+            return _karte.IstBegehbar(richtung);
+        }
+
+
+        private void AktualisiereBewegungsbutton()
+        {
+            btnHoch.Enabled = IsBetretbar(Karte.Richtung.hoch);
+            btnRunter.Enabled = IsBetretbar(Karte.Richtung.runter);
+            btnLinks.Enabled = IsBetretbar(Karte.Richtung.links);
+            btnRechts.Enabled = IsBetretbar(Karte.Richtung.rechts);
+        }
+
+        private void btnHoch_Click(object sender, EventArgs e)
         {
             _karte.Bewegen(Karte.Richtung.hoch);
             kartenView1.Invalidate();
@@ -53,7 +69,8 @@ namespace Rollenspiel_24_2
 
         private void btnSpieler_Click(object sender, EventArgs e)
         {
-
+            //GUISpieler neueForm = new GUISpieler();
+            //neueForm.ShowDialog();
         }
 
         private void btnInventar_Click(object sender, EventArgs e)

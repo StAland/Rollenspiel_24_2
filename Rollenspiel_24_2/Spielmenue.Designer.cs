@@ -57,7 +57,7 @@
             btnHoch.TabIndex = 1;
             btnHoch.Text = "Hoch";
             btnHoch.UseVisualStyleBackColor = true;
-            btnHoch.Click += btnOben_Click;
+            btnHoch.Click += btnHoch_Click;
             // 
             // btnRunter
             // 
