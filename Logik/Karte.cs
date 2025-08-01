@@ -48,7 +48,7 @@ namespace Logik
                         nichtsGewichtung,
                         kampfGewichtung
                     };
-                    var begehbar = rand.Next(0, 2) == 1;
+                    var begehbar = rand.Next(0, 100) < 80;
                     felder[i, j] = new Feld("Feldname", begehbar, ereignisse);
                 }
             }
@@ -105,10 +105,10 @@ namespace Logik
             switch (richtung)
             {
                 case Richtung.hoch:
-                    neuePosition.Y += 1;
+                    neuePosition.Y -= 1;
                     break;
                 case Richtung.runter:
-                    neuePosition.Y -= 1;
+                    neuePosition.Y += 1;
                     break;
                 case Richtung.links:
                     neuePosition.X -= 1;
@@ -123,10 +123,10 @@ namespace Logik
             {
                 _spieler.Bewegen(neuePosition);
             }
-            else
-            {
-                Console.WriteLine("Feld ist nicht betretbar");
-            }
+            //else
+            //{
+            //    Console.WriteLine("Feld ist nicht betretbar");
+            //}
         }
         public bool IstBegehbar(Richtung richtung)
         {
@@ -136,10 +136,10 @@ namespace Logik
             switch (richtung)
             {
                 case Richtung.hoch:
-                    neuePosition.Y += 1;
+                    neuePosition.Y -= 1;
                     break;
                 case Richtung.runter:
-                    neuePosition.Y -= 1;
+                    neuePosition.Y += 1;
                     break;
                 case Richtung.links:
                     neuePosition.X -= 1;

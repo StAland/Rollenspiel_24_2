@@ -39,7 +39,8 @@ namespace Rollenspiel_24_2
                 logger);
             var gegner = new Gegner("name", 100, 20, 20, 10, 10, 5, 2, "none", 10, new System.Drawing.Point(0, 0));
 
-            Application.Run(new Kampfübersicht(_spieler, gegner));
+            //Application.Run(new Kampfübersicht(_spieler, gegner));
+            Application.Run(new Spielmenue(new Karte()));
         }
     }
 }
