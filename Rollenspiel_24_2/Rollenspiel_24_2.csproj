@@ -27,4 +27,17 @@
     </EmbeddedResource>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Bilder\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Bilder\berg.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Bilder\boden.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

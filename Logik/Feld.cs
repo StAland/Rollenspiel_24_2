@@ -8,6 +8,13 @@ namespace Logik
 {
     public class Feld
     {
+        public enum Feldtyp
+        {
+            Berg,
+            Feld,
+            Wasser,
+            Strasse
+        }
         //private string _name;
         private bool _isBetretbar;
         public List<EreignisWahrscheinlichkeit> Ereignisse { get; }

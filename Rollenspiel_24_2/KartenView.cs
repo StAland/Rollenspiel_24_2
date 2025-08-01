@@ -13,6 +13,8 @@ namespace Rollenspiel_24_2
 {
     public partial class KartenView : UserControl
     {
+        Image bildBoden = Image.FromFile("Bilder/boden.png");
+        Image bildBerg = Image.FromFile("Bilder/berg.png");
         public Karte? Karte { get; set; }
         public KartenView()
         {
@@ -49,7 +51,8 @@ namespace Rollenspiel_24_2
                     }
                     else
                     {
-                        e.Graphics.FillRectangle(feld.IsBetretbar() ? Brushes.LightGreen : Brushes.DarkGray, rect);
+                        //e.Graphics.FillRectangle(feld.IsBetretbar() ? Brushes.LightGreen : Brushes.DarkGray, rect);
+                        e.Graphics.DrawImage(feld.IsBetretbar() ? bildBoden : bildBerg, rect);
                     }
                     e.Graphics.DrawRectangle(Pens.Black, rect);                    
                 }
