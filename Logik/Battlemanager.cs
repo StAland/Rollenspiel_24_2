@@ -4,12 +4,15 @@
     {
         private Spieler _spieler;
         private Gegner _gegner;
+        private Action<string> _ausgabe;
 
-        public BattleManager(Spieler spieler, Gegner gegner)
+        public BattleManager(Spieler spieler, Gegner gegner, Action<string> ausgabe)
         {
             _spieler = spieler;
             _gegner = gegner;
+            _ausgabe = ausgabe;
             _spieler.Gestorben += SpielerGestorben;
+            _gegner.Gestorben += GegnerGestorben;
         }
 
         public void Attack(Action<string> ausgabe)
@@ -18,62 +21,57 @@
             Attack(_gegner, _spieler, ausgabe);
         }
 
-        private void Attack(Charakter attacker, Charakter defender, Action<string> ausgabe)
+        private static void Attack(Charakter attacker, Charakter defender, Action<string> ausgabe)
         {
             int schaden = defender.NimmtSchaden(attacker.Angriff);
-
             ausgabe($"{attacker.Name} greift {defender.Name} an und verursacht {schaden} Schaden.");
         }
 
-        public void UseItem(Gegenstand item, Action<string> ausgabe)
+        public void UseItem(Gegenstand item)
         {
-            UseItem(_spieler,_gegner, item, ausgabe);
+            UseItem(_spieler, _gegner, item);
         }
 
-        private void UseItem(Spieler spieler,Gegner gegner ,Gegenstand item, Action<string> ausgabe)
+        private void UseItem(Spieler spieler, Gegner gegner, Gegenstand item)
         {
             if (spieler is Spieler actualSpieler && item is Verbrauchsgegenstand verbrauchsgegenstand)
             {
                 actualSpieler.UseItem(verbrauchsgegenstand);
                 int heilamount = actualSpieler.Heilen(verbrauchsgegenstand);
-                ausgabe($"{actualSpieler.Name} heilt sich um {heilamount} Lebenspunkte.");
-                Attack(gegner, spieler, ausgabe);
+                _ausgabe($"{actualSpieler.Name} heilt sich um {heilamount} Lebenspunkte.");
+                Attack(gegner, spieler, _ausgabe);
             }
         }
 
         public bool Fliehen(Action<string> ausgabe)
         {
-            return Fliehen(_spieler, _gegner, ausgabe);
-        }
-
-        private bool Fliehen(Charakter spieler, Charakter gegner, Action<string> ausgabe)
-        {
-            ausgabe($"{spieler.Name} versucht zu fliehen!");
-
-            Random random = new Random();
+            ausgabe($"{_spieler.Name} versucht zu fliehen!");
+            Random random = new();
             bool fluchtErfolgreich = random.Next(100) < 60;
-
             if (fluchtErfolgreich)
             {
-                ausgabe($"{spieler.Name} ist erfolgreich geflohen!");
+                ausgabe($"{_spieler.Name} ist erfolgreich geflohen!");
                 return true;
             }
             else
             {
-                ausgabe($"Flucht fehlgeschlagen! {gegner.Name} holt {spieler.Name} ein!");
-                Attack(gegner, spieler, ausgabe);
+                ausgabe($"Flucht fehlgeschlagen! {_gegner.Name} holt {_spieler.Name} ein!");
+                Attack(_gegner, _spieler, ausgabe);
                 return false;
             }
         }
 
         private void SpielerGestorben(object? sender, EventArgs e)
         {
-            // Hier kommt rein, was passiert, wenn der Spieler stirbt
+            _ausgabe?.Invoke($"{_spieler.Name} ist gestorben!");
+           
         }
 
-        public void SpielerGewonnen()
+        private void GegnerGestorben(object? sender, EventArgs e)
         {
-
+            int xp = _gegner.Erfahrungszuwachs;
+            _spieler.ErfahrungErhalten(xp);
+            _ausgabe?.Invoke($"{_spieler.Name} hat {_gegner.Name} besiegt und erhält {xp} XP!");
         }
     }
 }
