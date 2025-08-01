@@ -29,6 +29,8 @@ namespace Rollenspiel_24_2
             lblAngriff.Text = _spieler.Angriff.ToString();
             lblRuestung.Text = _spieler.Ruestung.ToString();
             lblKlasse.Text = _spieler.Klasse;
+            lblMaxLeben.Text = _spieler.MaxLeben.ToString();
+            lblMaxMana.Text = _spieler.MaxMana.ToString();
 
         }
 

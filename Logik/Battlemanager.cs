@@ -2,22 +2,17 @@
 {
     public class BattleManager
     {
-
         private Spieler _spieler;
         private Gegner _gegner;
 
-        
-
-        public BattleManager (Spieler spieler, Gegner gegner)
+        public BattleManager(Spieler spieler, Gegner gegner)
         {
             _spieler = spieler;
             _gegner = gegner;
             _spieler.Gestorben += SpielerGestorben;
         }
-        
-            
-        
-        public void Attack(Action<string> ausgabe)
+
+        public void Attack(Spieler spieler, Action<string> ausgabe)
         {
             Attack(_spieler, _gegner, ausgabe);
             Attack(_gegner, _spieler, ausgabe);
@@ -30,18 +25,19 @@
             ausgabe($"{attacker.Name} greift {defender.Name} an und verursacht {schaden} Schaden.");
         }
 
-        public void UseItem(Gegenstand item)
+        public void UseItem(Gegenstand item, Action<string> ausgabe)
         {
-            UseItem(_spieler, item, (message) => { /*blank*/ });
+            UseItem(_spieler,_gegner, item, ausgabe);
         }
 
-        private void UseItem(ISpieler spieler, Gegenstand item, Action<string> ausgabe)
+        private void UseItem(Spieler spieler,Gegner gegner ,Gegenstand item, Action<string> ausgabe)
         {
             if (spieler is Spieler actualSpieler && item is Verbrauchsgegenstand verbrauchsgegenstand)
             {
                 actualSpieler.UseItem(verbrauchsgegenstand);
                 int heilamount = actualSpieler.Heilen(verbrauchsgegenstand);
-                ausgabe($"{actualSpieler.Name} Heilt sich um {heilamount} Lebenspunkte");
+                ausgabe($"{actualSpieler.Name} heilt sich um {heilamount} Lebenspunkte.");
+                Attack(gegner, spieler, ausgabe);
             }
         }
 
@@ -49,6 +45,7 @@
         {
             Fliehen(_spieler, _gegner, ausgabe);
         }
+
         private bool Fliehen(Charakter spieler, Charakter gegner, Action<string> ausgabe)
         {
             ausgabe($"{spieler.Name} versucht zu fliehen!");
@@ -71,8 +68,7 @@
 
         private void SpielerGestorben(object? sender, EventArgs e)
         {
-            // Hier kommt rein was passiert wenn der Spieler stirbt
+            // Hier kommt rein, was passiert, wenn der Spieler stirbt
         }
-
     }
 }

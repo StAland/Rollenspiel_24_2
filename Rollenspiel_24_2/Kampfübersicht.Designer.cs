@@ -73,6 +73,7 @@
             Item.TabIndex = 3;
             Item.Text = "Item";
             Item.UseVisualStyleBackColor = true;
+            Item.Click += Item_Click;
             // 
             // Fliehen
             // 
@@ -83,6 +84,7 @@
             Fliehen.TabIndex = 4;
             Fliehen.Text = "Fliehen";
             Fliehen.UseVisualStyleBackColor = true;
+            Fliehen.Click += Fliehen_Click;
             // 
             // Kampfübersicht
             // 
