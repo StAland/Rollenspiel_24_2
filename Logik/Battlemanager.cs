@@ -27,16 +27,17 @@
 
         public void UseItem(Gegenstand item, Action<string> ausgabe)
         {
-            UseItem(_spieler, item, ausgabe);
+            UseItem(_spieler,_gegner, item, ausgabe);
         }
 
-        private void UseItem(Spieler spieler, Gegenstand item, Action<string> ausgabe)
+        private void UseItem(Spieler spieler,Gegner gegner ,Gegenstand item, Action<string> ausgabe)
         {
             if (spieler is Spieler actualSpieler && item is Verbrauchsgegenstand verbrauchsgegenstand)
             {
                 actualSpieler.UseItem(verbrauchsgegenstand);
                 int heilamount = actualSpieler.Heilen(verbrauchsgegenstand);
                 ausgabe($"{actualSpieler.Name} heilt sich um {heilamount} Lebenspunkte.");
+                Attack(gegner, spieler, ausgabe);
             }
         }
 

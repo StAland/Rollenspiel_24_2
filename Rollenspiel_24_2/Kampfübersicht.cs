@@ -30,16 +30,19 @@ namespace Rollenspiel_24_2
         private void Attack_Click(object sender, EventArgs e)
         {
             _battleManager.Attack(spieler, msg => MessageBox.Show(msg));
+            UpdateAnzeige();
         }
 
         private void Item_Click(object sender, EventArgs e)
         {
             //_battleManager.UseItem(spieler.Inventar[0], msg => MessageBox.Show(msg));
+            //UpdateAnzeige();
         }
 
         private void Fliehen_Click(object sender, EventArgs e)
         {
             _battleManager.Fliehen(msg => MessageBox.Show(msg));
+            UpdateAnzeige();
         }
         private void UpdateAnzeige()
         {
