@@ -42,24 +42,28 @@ namespace Rollenspiel_24_2
         {
             _karte.Bewegen(Karte.Richtung.hoch);
             kartenView1.Invalidate();
+            AktualisiereBewegungsbutton();
         }
 
         private void btnRechts_Click(object sender, EventArgs e)
         {
             _karte.Bewegen(Karte.Richtung.rechts);
             kartenView1.Invalidate();
+            AktualisiereBewegungsbutton();
         }
 
         private void btnLinks_Click(object sender, EventArgs e)
         {
             _karte.Bewegen(Karte.Richtung.links);
             kartenView1.Invalidate();
+            AktualisiereBewegungsbutton();
         }
 
         private void btnRunter_Click(object sender, EventArgs e)
         {
             _karte.Bewegen(Karte.Richtung.runter);
             kartenView1.Invalidate();
+            AktualisiereBewegungsbutton();
         }
 
         private void kartenView1_Load(object sender, EventArgs e)
