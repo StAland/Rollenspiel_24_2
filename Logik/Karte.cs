@@ -152,15 +152,15 @@ namespace Logik
             return IsBetretbar(neuePosition);
         }
 
-        public void EreignisAuslösen()
+        public IEreignis EreignisAuslösen()
         {
             var position = _spieler.Position;
             var feld = Felder[position.X, position.Y];
 
-            if (feld == null) return;
+            if (feld == null) return null;
             var ereignisse = feld.Ereignisse;
 
-            if (ereignisse == null || ereignisse.Count == 0) return;
+            if (ereignisse == null || ereignisse.Count == 0) return null;
             var gewichtungssumme = ereignisse.Sum(x => x.Gewichtung);
             var rand = new Random();
             var zufall = rand.Next(0, gewichtungssumme);
@@ -176,8 +176,8 @@ namespace Logik
                 }
             }
             
-            if (ereignis == null) return;
-            ereignis.Ausloesen(_spieler);
+            if (ereignis == null) return null;
+            return ereignis;
         }
     }
 }
